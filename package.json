@@ -15,7 +15,10 @@
   },
   "scripts": {
     "setup": "yarn lerna bootstrap",
+    "start:frontend": "npx lerna exec --scope=squarebox-frontend yarn start",
+    "start:backend": "npx lerna exec --scope=squarebox-backend yarn start",
     "compile": "npx lerna exec -- yarn compile",
+    "compile:fix": "yarn compile && yarn lint:fix",
     "lint": "npx lerna exec -- yarn lint",
     "lint:fix": "npx lerna exec -- yarn lint:fix"
   }
