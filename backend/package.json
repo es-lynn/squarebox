@@ -1,4 +1,12 @@
 {
-  "name": "my-app",
-  "version": "0.1.0"
+  "name": "squarebox-backend",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "@types/node": "^16.4.3",
+    "ts-node": "^10.1.0"
+  },
+  "scripts": {
+    "start": "ts-node index.ts"
+  }
 }
