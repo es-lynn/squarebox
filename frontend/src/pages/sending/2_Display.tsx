@@ -1,14 +1,16 @@
 import Text from 'antd/es/typography/Text'
 import { QRCode } from '../../components/QRCode'
+import React from 'react'
+import { useLinkedState } from '../../lib/LinkedState'
+import { sendingStore } from './SendingStore'
 
-type SendingPageDisplayProps = {
-  string: string
-}
-export const SendingPageDisplay = ({ string }: SendingPageDisplayProps) => {
+export const SendingDisplayPage = () => {
+  const [text] = useLinkedState(sendingStore)
+
   return (
     <div>
       <Text>2. Scan QR Code using another device</Text>
-      <QRCode content={string} />
+      <QRCode content={text} />
     </div>
   )
 }
