@@ -29,8 +29,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint . --ext .ts,.tsx",
-    "lint:fix": "yarn lint --fix",
+    "lint": "eslint . --ext .ts,.tsx --max-warnings=0",
+    "lint:fix": "eslint . --ext .ts,.tsx --fix --plugin unused-imports --fix --rule 'unused-imports/no-unused-imports-ts: warn'",
     "compile": "tsc --noEmit && yarn lint"
   },
   "eslintConfig": {

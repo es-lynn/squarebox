@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { Dispatch, SetStateAction } from 'react'
 // eslint-disable-next-line @typescript-eslint/ban-types
 declare type State = number | boolean | string | Object | undefined

@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 import Text from 'antd/es/typography/Text'
-import TextArea, { TextAreaRef } from 'antd/es/input/TextArea'
+import { TextAreaRef } from 'antd/es/input/TextArea'
 import { useLinkedState } from '../../lib/LinkedState'
 import { copyFromInputRef, receivingStore } from './ReceivingStore'
 import { Button } from 'antd'

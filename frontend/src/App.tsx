@@ -1,10 +1,9 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 import React from 'react'
-import logo from './logo.svg'
 import './App.css'
 import 'antd/dist/antd.css'
-import { render } from 'react-dom'
-import { Router, Link, RouteComponentProps } from '@reach/router'
-import { OldApp } from './pages/OldApp'
+import { Router, RouteComponentProps } from '@reach/router'
 import { SendingInputPage } from './pages/sending/1_Input'
 import { SendingDisplayPage } from './pages/sending/2_Display'
 import { routes } from './routes/routes'
