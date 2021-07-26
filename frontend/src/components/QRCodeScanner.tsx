@@ -14,6 +14,7 @@ export const QRCodeScanner = ({ size = 256, onQRCodeScanned }: QRCodeScannerProp
   return (
     <div
       style={{
+        backgroundImage: 'url("/qrcode.jpg")',
         display: 'flex',
         flexDirection: 'row',
         width: size,
@@ -25,8 +26,16 @@ export const QRCodeScanner = ({ size = 256, onQRCodeScanned }: QRCodeScannerProp
         alignItems: 'center'
       }}
     >
-      <Input value={content} onChange={e => setContent(e.target.value)} />
-      <Button onClick={() => onQRCodeScanned(content)}>onQRCodeScanned()</Button>
+      <div
+        style={{
+          opacity: 0.9,
+          display: 'flex',
+          flexDirection: 'column'
+        }}
+      >
+        <Input value={content} onChange={e => setContent(e.target.value)} />
+        <Button onClick={() => onQRCodeScanned(content)}>onQRCodeScanned()</Button>
+      </div>
     </div>
   )
 }
