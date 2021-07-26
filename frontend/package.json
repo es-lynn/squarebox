@@ -1,6 +1,6 @@
 {
-  "name": "my-app",
-  "version": "0.1.0",
+  "name": "squarebox-frontend",
+  "version": "0.0.0",
   "private": true,
   "dependencies": {
     "@aelesia/commons": "^0.5.0",
