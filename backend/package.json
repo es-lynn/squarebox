@@ -7,6 +7,9 @@
     "ts-node": "^10.1.0"
   },
   "scripts": {
-    "start": "ts-node index.ts"
+    "start": "ts-node index.ts",
+    "lint": "eslint . --ext .ts,.tsx",
+    "lint:fix": "yarn lint --fix",
+    "compile": "tsc --noEmit && yarn lint"
   }
 }
