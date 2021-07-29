@@ -1,6 +1,7 @@
 # Setup
 
-`yarn setup`
+1. `yarn setup`
+2. `yarn install`
 
 # Running 
 
