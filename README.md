@@ -2,6 +2,15 @@
 
 `yarn setup`
 
+If this does not work, try:
+```
+cd frontend 
+yarn install
+
+cd backend
+yarn install
+```
+
 # Running 
 
 `yarn start:frontend`
@@ -13,3 +22,4 @@
 1. `yarn compile:fix`
 2. Fix all errors & warnings
 3. Commit
+
