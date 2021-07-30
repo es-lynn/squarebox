@@ -1,7 +1,8 @@
 # Setup
 
-1. `yarn setup`
-2. `yarn install`
+1. `yarn install`
+2. `yarn setup`
+
 
 If this does not work, try:
 ```
