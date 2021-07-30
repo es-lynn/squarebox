@@ -3,17 +3,17 @@
 1. `yarn install`
 2. `yarn setup`
 
-
 If this does not work, try:
+
 ```
-cd frontend 
+cd frontend
 yarn install
 
 cd backend
 yarn install
 ```
 
-# Running 
+# Running
 
 `yarn start:frontend`
 
@@ -25,3 +25,8 @@ yarn install
 2. Fix all errors & warnings
 3. Commit
 
+# Build into Single Html
+
+`rm -rf build && yarn build && serve -s build`
+
+cd into `index.html` and extract it from `build/index.html`
