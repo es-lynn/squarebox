@@ -1,26 +1,30 @@
-import React from 'react'
+import Button from 'antd/es/button'
+import TextArea from 'antd/es/input/TextArea'
+import React, { useState } from 'react'
+import QRCode from 'react-qr-code'
 
-type QRCodeProps = {
-  content: string
-  size?: number
-}
-export const QRCode = ({ content, size = 256 }: QRCodeProps) => {
-  // TODO: Replace with real QR Code
+export const QRCodeComponent = () => {
+  const [valueToQr, setValueToQR] = useState('')
+  const [showQRGenerator, setShowQRGenerator] = useState(false)
+  const onInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setValueToQR(e.target.value)
+  }
+
+  const generateQR = () => {
+    setShowQRGenerator(true)
+  }
+
   return (
-    <div
-      style={{
-        width: size,
-        height: size,
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderWidth: 2,
-        borderStyle: 'solid',
-        borderColor: 'black'
-      }}
-    >
-      {content}
+    <div>
+      <TextArea
+        rows={6}
+        onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => onInputChange(e)}
+        showCount
+      />
+      <Button onClick={generateQR}>Generate QR</Button>
+      <br />
+      <br />
+      {showQRGenerator && <QRCode value={valueToQr} />}
     </div>
   )
 }
