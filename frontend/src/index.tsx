@@ -1,14 +1,43 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
 // import App from './App'
 import reportWebVitals from './reportWebVitals'
 import { SetupScannerModePage } from './pages/setup/2b_SetupScannerMode'
+import { QRCodeComponent } from './components/QRCode'
+import styled from '@emotion/styled'
+import { Button } from 'antd'
+import 'antd/dist/antd.css'
+
+const TempButton = styled(Button)`
+  width: 200px;
+`
+
+const ContentWrapper = styled.div`
+  margin-top: 50px;
+  width: 50vw;
+`
+
+const TempMain = () => {
+  const [showStatus, setShowStatus] = useState('')
+  return (
+    <div>
+      <h2>Please choose an option</h2>
+      <TempButton onClick={() => setShowStatus('createQR')}>Generate QR</TempButton>
+      <br />
+      <TempButton onClick={() => setShowStatus('scanQR')}>Scan QR</TempButton>
+      <ContentWrapper>
+        {showStatus === 'createQR' && <QRCodeComponent />}
+        {showStatus === 'scanQR' && <SetupScannerModePage />}
+      </ContentWrapper>
+    </div>
+  )
+}
 
 ReactDOM.render(
   <React.StrictMode>
-    <h1>Testing Camera</h1>
-    <SetupScannerModePage />
+    <h1>SquareBox Reader</h1>
+    <TempMain />
     {/* <App /> */}
   </React.StrictMode>,
   document.getElementById('root')
