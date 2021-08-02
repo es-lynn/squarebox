@@ -12,9 +12,9 @@
     "request": "^2.88.0"
   },
   "scripts": {
-    "lint": "",
-    "lint:fix": "",
-    "compile": "",
-    "compile:fix": ""
+    "lint": "echo placeholder",
+    "lint:fix": "echo placeholder",
+    "compile": "echo placeholder",
+    "compile:fix": "echo placeholder"
   }
 }
