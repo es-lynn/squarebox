@@ -6,6 +6,7 @@ export const receivingStore = new LinkedState<string>('')
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const onQRCodeScanned = (content: string) => {
+  receivingStore.set(content)
   Nav.url(path.receiving.output)
 }
 
