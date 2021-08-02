@@ -1,8 +1,6 @@
 import Text from 'antd/es/typography/Text'
 // import { QRCode } from '../../components/QRCode'
 import React from 'react'
-import { useLinkedState } from '../../lib/LinkedState'
-import { sendingStore } from './SendingStore'
 
 export const SendingDisplayPage = () => {
   // const [text] = useLinkedState(sendingStore)
