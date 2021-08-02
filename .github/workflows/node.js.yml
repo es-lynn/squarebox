@@ -11,12 +11,12 @@ on:
 
 jobs:
   compile:
-
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        node-version: [12.x, 14.x, 16.x]
+        node-version: [12.x]
+#        node-version: [12.x, 14.x, 16.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
@@ -25,7 +25,46 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: ${{ matrix.node-version }}
-        cache: 'npm'
+        cache: 'yarn'
+    - run: yarn install
     - run: yarn setup
-    - run: yarn bootstrap
-    - run: yarn compile:fix
+
+    - name: 'Compilation'
+      run: yarn compile:fix
+
+    - name: 'Test'
+      run: echo 'yarn test'
+      # run: yarn test
+
+  deploy:
+    needs: compile
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'yarn'
+      - run: yarn install
+      - run: yarn setup
+
+      - name: 'Build'
+        working-directory: frontend
+        run: CI=false yarn build
+
+      - name: 'Deploy'
+        if: contains(github.ref, 'refs/heads/master') || contains(github.ref, 'refs/heads/ci')
+        uses: netlify/actions/cli@master
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        with:
+          args: deploy --dir=frontend/build --prod
+
+
