@@ -55,7 +55,7 @@ jobs:
 
       - name: 'Build'
         working-directory: frontend
-        run: yarn build
+        run: CI=false yarn build
 
       - name: 'Deploy'
         uses: netlify/actions/cli@master
