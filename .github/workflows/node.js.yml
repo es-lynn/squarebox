@@ -91,17 +91,7 @@ jobs:
         run: CI=false yarn build
 
       - name: 'Move to root'
-        run: |
-          mv frontend/build/index.html ./index.html
-          rm -rf backend
-          rm -rf frontend
-          rm -rf libraries
-          rm .eslintrc.js
-          rm .prettierrc.js
-          rm package.json
-          rm tsconfig.json
-          rm yarn.lock
-          rm lerna.json
+        run: mv frontend/build/index.html ./index.html
 
       - name: 'Push /build folder to Github'
         run: |
