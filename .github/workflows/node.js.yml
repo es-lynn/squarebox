@@ -95,6 +95,8 @@ jobs:
 
       - name: 'Push /build folder to Github'
         run: |
+          git checkout build
+          git pull
           npx @siliconjungles/rn-scripts commit_all "
             repo=https://$GITHUB_ACTOR:${{secrets.GITHUB_TOKEN}}@github.com/$GITHUB_REPOSITORY.git
             branch=build
