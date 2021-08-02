@@ -2,6 +2,8 @@ import React from 'react'
 import Webcam from 'react-webcam'
 import QrReader from 'react-qr-reader'
 import styled from '@emotion/styled'
+import { onQRCodeScanned } from './ReceivingStore'
+import { QRCodeScanner } from '../../components/QRCodeScanner'
 
 export const ReceivingScannerPage = () => {
   const webcamRef = React.useRef<Webcam>(null)
@@ -20,7 +22,7 @@ export const ReceivingScannerPage = () => {
   const login = async (hash: string | null) => {
     console.log('scanning....')
     if (hash) {
-      setText(hash)
+      onQRCodeScanned(hash)
     }
   }
 
@@ -41,8 +43,7 @@ export const ReceivingScannerPage = () => {
       {imgSrc && <img src={imgSrc} />} */}
         {/* {qrScanner.start()} */}
         <QrReader delay={1000} onError={handleError} onScan={login} style={{ width: '100%' }} />
-        <h1>The word is:</h1>
-        <h3>{text}</h3>
+        {/*<QRCodeScanner onQRCodeScanned={onQRCodeScanned} />*/}
       </div>
     </ContentWrapper>
   )
