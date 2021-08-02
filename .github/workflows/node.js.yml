@@ -59,6 +59,7 @@ jobs:
         run: CI=false yarn build
 
       - name: 'Deploy'
+        if: contains(github.ref, 'refs/heads/master') || contains(github.ref, 'refs/heads/ci')
         uses: netlify/actions/cli@master
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
