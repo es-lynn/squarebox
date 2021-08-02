@@ -5,3 +5,4 @@ backend/node_modules
 lerna-debug.log
 package-lock.json
 build/
+frontend/yarn-error.log
