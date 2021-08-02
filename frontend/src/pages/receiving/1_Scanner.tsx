@@ -1,13 +1,56 @@
 import React from 'react'
-import Text from 'antd/es/typography/Text'
-import { QRCodeScanner } from '../../components/QRCodeScanner'
-import { onQRCodeScanned } from './ReceivingStore'
+import Webcam from 'react-webcam'
+import QrReader from 'react-qr-reader'
+import styled from '@emotion/styled'
 
 export const ReceivingScannerPage = () => {
+  const webcamRef = React.useRef<Webcam>(null)
+  const [imgSrc, setImgSrc] = React.useState<any>('')
+  const [text, setText] = React.useState('')
+
+  const capture = React.useCallback(() => {
+    if (null !== webcamRef.current) {
+      const imageSrc: any = webcamRef.current.getScreenshot()
+      setImgSrc(imageSrc)
+    }
+  }, [webcamRef, setImgSrc])
+  const handleError = (err: any) => {
+    console.log(err)
+  }
+  const login = async (hash: string | null) => {
+    console.log('scanning....')
+    if (hash) {
+      setText(hash)
+    }
+  }
+
+  // const qrScanner = new QrScanner(videoElem, result => console.log('decoded qr code:', result))
   return (
-    <>
-      <Text>1. Scan QR Code here</Text>
-      <QRCodeScanner onQRCodeScanned={onQRCodeScanned} />
-    </>
+    <ContentWrapper>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          width: '600px',
+          gap: '10px',
+          alignItems: 'center'
+        }}
+      >
+        {/* <Webcam audio={false} ref={webcamRef} screenshotFormat="image/jpeg" />
+      <Button onClick={capture}>Open Camera</Button>
+      {imgSrc && <img src={imgSrc} />} */}
+        {/* {qrScanner.start()} */}
+        <QrReader delay={1000} onError={handleError} onScan={login} style={{ width: '100%' }} />
+        <h1>The word is:</h1>
+        <h3>{text}</h3>
+      </div>
+    </ContentWrapper>
   )
 }
+
+const ContentWrapper = styled.div`
+  margin-top: 50px;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+`
