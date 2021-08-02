@@ -105,7 +105,6 @@ jobs:
 
       - name: 'Push /build folder to Github'
         run: |
-          git add .
           node libraries/rn-scripts/dist/index.js commit_all "
             repo=https://$GITHUB_ACTOR:${{secrets.GITHUB_TOKEN}}@github.com/$GITHUB_REPOSITORY.git
             branch=build
