@@ -1,12 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
 // import App from './App'
 import reportWebVitals from './reportWebVitals'
-import { SetupScannerModePage } from './pages/setup/2b_SetupScannerMode'
-import { QRCodeComponent } from './components/QRCode'
-import styled from '@emotion/styled'
-import { Button } from 'antd'
 import 'antd/dist/antd.css'
 import App from './App'
 

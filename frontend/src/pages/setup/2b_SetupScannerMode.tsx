@@ -1,4 +1,3 @@
-import Button from 'antd/es/button'
 import React from 'react'
 import Webcam from 'react-webcam'
 // import QrScanner from 'qr-scanner'
