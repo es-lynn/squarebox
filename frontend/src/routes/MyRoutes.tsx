@@ -20,6 +20,10 @@ const MyRoutes = () => {
     Nav.setNavigate(navigate)
   }, [navigate])
 
+  useEffect(() => {
+    Nav.url(path.setup.computer)
+  }, [])
+
   return (
     // @ts-ignore
     <Routes>
