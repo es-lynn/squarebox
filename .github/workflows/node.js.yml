@@ -30,4 +30,9 @@ jobs:
     - run: yarn install
     - run: yarn setup
 
-    - run: yarn compile:fix
+    - name: 'Compilation'
+      run: yarn compile:fix
+
+    - name: 'Test'
+      run: echo 'yarn test'
+      # run: yarn test
