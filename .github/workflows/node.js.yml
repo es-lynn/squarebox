@@ -29,4 +29,5 @@ jobs:
         cache: 'yarn'
     - run: yarn install
     - run: yarn setup
+
     - run: yarn compile:fix
