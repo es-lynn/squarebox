@@ -10,5 +10,11 @@
     "aws-sdk": "^2.597.0",
     "qr-image": "^3.2.0",
     "request": "^2.88.0"
+  },
+  "scripts": {
+    "lint": "",
+    "lint:fix": "",
+    "compile": "",
+    "compile:fix": ""
   }
 }
