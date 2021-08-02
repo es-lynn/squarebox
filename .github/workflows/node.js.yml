@@ -11,7 +11,6 @@ on:
 
 jobs:
   compile:
-
     runs-on: ubuntu-latest
 
     strategy:
@@ -36,3 +35,34 @@ jobs:
     - name: 'Test'
       run: echo 'yarn test'
       # run: yarn test
+
+  deploy:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'yarn'
+      - run: yarn install
+      - run: yarn setup
+
+      - name: 'Build'
+        working-directory: frontend
+        run: yarn build
+
+      - name: 'Deploy'
+        uses: netlify/actions/cli@master
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        with:
+          args: deploy --dir=frontend/build --prod
+
+
