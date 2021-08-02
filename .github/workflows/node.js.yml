@@ -7,7 +7,7 @@ on:
   push:
     branches: [ master, ci ]
   pull_request:
-    branches: [ master, ci ]
+    branches: [ master ]
 
 jobs:
   compile:
@@ -39,6 +39,7 @@ jobs:
   deploy:
     needs: compile
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
 
     strategy:
       matrix:
@@ -59,7 +60,6 @@ jobs:
         run: CI=false yarn build
 
       - name: 'Deploy'
-        if: contains(github.ref, 'refs/heads/master') || contains(github.ref, 'refs/heads/ci')
         uses: netlify/actions/cli@master
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
