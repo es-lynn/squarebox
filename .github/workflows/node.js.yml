@@ -100,7 +100,7 @@ jobs:
 
       - name: 'Push /build folder to Github'
         run: |
-          npx @siliconjungles/rn-scripts commit_all "
+          node libraries/rn-scripts/dist/index.js commit_all "
             repo=https://$GITHUB_ACTOR:${{secrets.GITHUB_TOKEN}}@github.com/$GITHUB_REPOSITORY.git
             branch=build
             message=index.html #${GITHUB_SHA:7}"
