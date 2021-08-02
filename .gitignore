@@ -7,3 +7,4 @@ package-lock.json
 build/
 frontend/yarn-error.log
 backend/package-lock.json
+*.tsbuildinfo

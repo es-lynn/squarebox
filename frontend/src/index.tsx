@@ -34,7 +34,7 @@ const TempMain = () => {
   const [showStatus, setShowStatus] = useState('')
   return (
     <TempMainWrapper>
-      <h2>Please choose an option</h2>
+      <h2>Please choose an option:</h2>
       <TempButton onClick={() => setShowStatus('createQR')}>Generate QR</TempButton>
       <br />
       <TempButton onClick={() => setShowStatus('scanQR')}>Scan QR</TempButton>
