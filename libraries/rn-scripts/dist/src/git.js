@@ -197,7 +197,7 @@ function commit(email, name, message, repo, branch) {
           _a.sent()
           return [
             4 /*yield*/,
-            Shell_1.default.sh('git', ['push', repo, 'HEAD:' + branch], '--force')
+            Shell_1.default.sh('git', ['push', repo, 'HEAD:' + branch, '--force'])
           ]
         case 4:
           _a.sent()
