@@ -93,11 +93,6 @@ jobs:
       - name: 'Move to root'
         run: mv frontend/build/index.html ./index.html
 
-      - uses: actions/checkout@v2
-        with:
-          ref: 'build'
-          clean: 'false'
-
       - name: 'Push /build folder to Github'
         run: |
           node libraries/rn-scripts/dist/index.js commit_all "
