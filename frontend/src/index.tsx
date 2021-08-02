@@ -15,13 +15,25 @@ const TempButton = styled(Button)`
 
 const ContentWrapper = styled.div`
   margin-top: 50px;
-  width: 50vw;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+`
+
+const TempMainWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  height: 800px;
+  justify-content: center;
 `
 
 const TempMain = () => {
   const [showStatus, setShowStatus] = useState('')
   return (
-    <div>
+    <TempMainWrapper>
       <h2>Please choose an option</h2>
       <TempButton onClick={() => setShowStatus('createQR')}>Generate QR</TempButton>
       <br />
@@ -30,13 +42,13 @@ const TempMain = () => {
         {showStatus === 'createQR' && <QRCodeComponent />}
         {showStatus === 'scanQR' && <SetupScannerModePage />}
       </ContentWrapper>
-    </div>
+    </TempMainWrapper>
   )
 }
 
 ReactDOM.render(
   <React.StrictMode>
-    <h1>SquareBox Reader</h1>
+    {/* <h1 style={{ textAlign: 'center' }}>SquareBox Reader</h1> */}
     <TempMain />
     {/* <App /> */}
   </React.StrictMode>,

@@ -1,7 +1,13 @@
+import styled from '@emotion/styled'
 import Button from 'antd/es/button'
 import TextArea from 'antd/es/input/TextArea'
 import React, { useState } from 'react'
 import QRCode from 'react-qr-code'
+
+const TextAreaCustom = styled(TextArea)`
+  width: 500px;
+  margin-bottom: 50px;
+`
 
 export const QRCodeComponent = () => {
   const [valueToQr, setValueToQR] = useState('')
@@ -16,12 +22,14 @@ export const QRCodeComponent = () => {
 
   return (
     <div>
-      <TextArea
+      <TextAreaCustom
         rows={6}
         onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => onInputChange(e)}
         showCount
       />
-      <Button onClick={generateQR}>Generate QR</Button>
+      <Button disabled={!valueToQr} onClick={generateQR}>
+        Generate QR
+      </Button>
       <br />
       <br />
       {showQRGenerator && <QRCode value={valueToQr} />}
