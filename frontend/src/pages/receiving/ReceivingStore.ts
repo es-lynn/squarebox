@@ -1,12 +1,12 @@
 import { LinkedState } from '../../lib/LinkedState'
-import { Nav } from '../../app/Navigation'
-import { routes } from '../../routes/routes'
+import { Nav } from '../../app/Navigator'
+import { path } from '../../routes/path'
 
 export const receivingStore = new LinkedState<string>('')
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const onQRCodeScanned = (content: string) => {
-  Nav.go(routes.receiving.output)
+  Nav.url(path.receiving.output)
 }
 
 // eslint-disable-next-line
