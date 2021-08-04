@@ -1,7 +1,7 @@
 import { Nav } from '../../app/Navigator'
 import { path } from '../../routes/path'
 import { UserDataStore } from '../../app/storage/LocalStore'
-import { credentials, device } from '../home/Home.func'
+import { credentials, device } from '../State'
 
 export const onSelectReceive = () => {
   Nav.url(path.receiving.scanner)

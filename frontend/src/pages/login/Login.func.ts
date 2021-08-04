@@ -1,7 +1,7 @@
-import { Credentials, credentials } from '../home/Home.func'
 import { UserDataStore } from '../../app/storage/LocalStore'
 import { Nav } from '../../app/Navigator'
 import { path } from '../../routes/path'
+import { credentials, Credentials } from '../State'
 
 export function configureCredentials(_credentials: Credentials) {
   credentials.set(_credentials)

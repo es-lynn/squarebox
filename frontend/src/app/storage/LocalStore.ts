@@ -1,5 +1,5 @@
-import { Credentials, Device } from '../../pages/home/Home.func'
 import { SafeStorage } from '../../lib/SafeStorage'
+import { Credentials, Device } from '../../pages/State'
 
 export const UserDataStore = new SafeStorage<{
   deviceInfo: Device
