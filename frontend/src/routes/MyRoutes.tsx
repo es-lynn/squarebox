@@ -6,7 +6,6 @@ import { SendingDisplayPage } from '../pages/temp/sending/2_Display'
 import { path } from './path'
 import { ReceivingOutputPage } from '../pages/temp/receiving/2_Output'
 import { ReceivingScannerPage } from '../pages/temp/receiving/1_Scanner'
-import { SetupDevicePage } from '../pages/temp/setup/1_SetupDevice'
 import { SetupComputerModePage } from '../pages/temp/setup/2a_SetupComputerMode'
 import { Route, Routes, useNavigate } from 'react-router-dom'
 import { Nav } from '../app/Navigator'
@@ -22,10 +21,11 @@ import { Computer } from '../pages/computer/Computer'
 
 const MyRoutes = () => {
   const navigate = useNavigate()
-  Nav.setNavigate(navigate)
+  useEffect(() => {
+    Nav.setNavigate(navigate)
+  }, [])
 
   return (
-    // @ts-ignore
     <Routes>
       <Route path={'/'} element={<Home />} />
 

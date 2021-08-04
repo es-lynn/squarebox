@@ -1,7 +1,5 @@
 import React, { useState } from 'react'
 import { Button, Input } from 'native-base'
-import { useLinkedState } from '../lib/LinkedState'
-import { receivingStore } from '../pages/temp/receiving/ReceivingStore'
 import QrReader from 'react-qr-reader'
 
 export type QRCodeScannerProps = {

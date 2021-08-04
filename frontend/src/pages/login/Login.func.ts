@@ -1,15 +1,11 @@
-import { credentials } from '../home/Home.func'
+import { Credentials, credentials } from '../home/Home.func'
+import { UserDataStore } from '../../app/storage/LocalStore'
+import { Nav } from '../../app/Navigator'
+import { path } from '../../routes/path'
 
-export function configureAsOffline() {
-  credentials.set({
-    mode: 'offline'
-  })
-}
+export function configureCredentials(_credentials: Credentials) {
+  credentials.set(_credentials)
+  UserDataStore.set('credentials', _credentials)
 
-export function configureAsOnline(username: string, encryptionKey: string) {
-  credentials.set({
-    mode: 'online',
-    username,
-    encryptionKey
-  })
+  Nav.url(path.setup.index)
 }

@@ -1,5 +1,5 @@
 import { View, ViewStyle } from 'react-native'
-import React, { ReactElement, ReactNode } from 'react'
+import React, { ReactNode } from 'react'
 import { withStyle } from 'reactjs-commons'
 
 type PageViewProps = {
