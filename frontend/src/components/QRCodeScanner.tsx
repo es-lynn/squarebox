@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Button, Input } from 'native-base'
 import { useLinkedState } from '../lib/LinkedState'
 import { receivingStore } from '../pages/temp/receiving/ReceivingStore'
@@ -10,7 +10,7 @@ export type QRCodeScannerProps = {
 }
 // TODO: Replace with a real QRCode scanner
 export const QRCodeScanner = ({ size = 256, onQRCodeScanned }: QRCodeScannerProps) => {
-  const [content, setContent] = useLinkedState(receivingStore)
+  const [content, setContent] = useState<string>('')
 
   const handleError = (err: any) => {
     console.error(err)
