@@ -4,12 +4,15 @@ import React from 'react'
 import './App.css'
 import { MyRoutes } from './routes/MyRoutes'
 import { HashRouter } from 'react-router-dom'
+import { NativeBaseProvider } from 'native-base'
 
 function App() {
   return (
-    <HashRouter>
-      <MyRoutes />
-    </HashRouter>
+    <NativeBaseProvider>
+      <HashRouter>
+        <MyRoutes />
+      </HashRouter>
+    </NativeBaseProvider>
   )
 }
 

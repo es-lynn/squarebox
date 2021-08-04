@@ -1,7 +1,5 @@
 import React from 'react'
 
-import QrReader from 'react-qr-reader'
-import styled from '@emotion/styled'
 import { Button } from 'native-base'
 import { onSelectReceiveQR, onSelectScannerPair, onSelectScanQR } from './SetupStore'
 

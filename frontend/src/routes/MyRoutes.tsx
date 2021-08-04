@@ -1,8 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
 import React, { useEffect } from 'react'
-import '../App.css'
-import 'antd/dist/antd.css'
 import { SendingInputPage } from '../pages/sending/1_Input'
 import { SendingDisplayPage } from '../pages/sending/2_Display'
 import { path } from './path'

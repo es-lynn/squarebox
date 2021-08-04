@@ -1,5 +1,5 @@
 import { Button, TextArea } from 'native-base'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import QRCode from 'react-qr-code'
 import { sendQRCodeToServer } from '../pages/sending/SendingStore'
 import { Nav } from '../app/Navigator'

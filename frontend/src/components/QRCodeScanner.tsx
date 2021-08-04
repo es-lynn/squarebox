@@ -1,9 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Button, Input } from 'native-base'
 import { useLinkedState } from '../lib/LinkedState'
-import { onQRCodeScanned, receivingStore } from '../pages/receiving/ReceivingStore'
+import { receivingStore } from '../pages/receiving/ReceivingStore'
 import QrReader from 'react-qr-reader'
-import Webcam from 'react-webcam'
 
 export type QRCodeScannerProps = {
   size?: number

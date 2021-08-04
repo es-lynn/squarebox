@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { QRCodeScanner } from '../../components/QRCodeScanner'
 import httyp from 'httyp'
 import { Cfg } from '../../app/config/Config'
-import { onQRCodeScanned } from '../receiving/ReceivingStore'
 import { Text } from 'native-base'
 import QRCode from 'react-qr-code'
 
