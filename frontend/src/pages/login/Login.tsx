@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Input, Text, View } from 'native-base'
 import { Button } from 'react-native'
-import { configureAsOffline, configureAsOnline } from './LoginState'
+import { configureAsOffline, configureAsOnline } from './Login.func'
 import { PageView } from '../../components/business/PageView'
 import { Nav } from '../../app/Navigator'
 import { path } from '../../routes/path'

@@ -12,7 +12,7 @@ type Credentials =
   | undefined
 export const credentials = new LinkedState<Credentials>(undefined)
 
-type Device = 'scanner' | 'computer' | undefined
+export type Device = 'scanner' | 'computer' | undefined
 export const device = new LinkedState<Device>(undefined)
 
 export function isCredentialsConfigured() {

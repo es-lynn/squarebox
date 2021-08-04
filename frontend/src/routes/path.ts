@@ -15,10 +15,7 @@ export const path = {
     login: '/login'
   },
   setup: {
-    index: '/setup',
-    device: '/setup/device',
-    computer: '/setup/computer',
-    scanner: '/setup/scanner'
+    index: '/setup'
   },
   scanner: {
     index: '/scanner',

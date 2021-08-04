@@ -2,11 +2,11 @@ import { Nav } from '../../app/Navigator'
 import { path } from '../../routes/path'
 
 export const onSelectComputer = () => {
-  Nav.url(path.setup.computer)
+  Nav.url(path.computer.index)
 }
 
 export const onSelectScanner = () => {
-  Nav.url(path.setup.scanner)
+  Nav.url(path.scanner.index)
 }
 
 export const onSelectReceiving = () => {

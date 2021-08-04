@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { isCredentialsConfigured, isDeviceConfigured, redirectToPage } from './HomeState'
+import { isCredentialsConfigured, isDeviceConfigured, redirectToPage } from './Home.func'
 import { Nav } from '../../app/Navigator'
 import { path } from '../../routes/path'
 

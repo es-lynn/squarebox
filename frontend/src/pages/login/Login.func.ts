@@ -1,4 +1,4 @@
-import { credentials } from '../home/HomeState'
+import { credentials } from '../home/Home.func'
 
 export function configureAsOffline() {
   credentials.set({

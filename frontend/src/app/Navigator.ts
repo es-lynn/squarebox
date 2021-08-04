@@ -6,7 +6,6 @@ class Navigator {
     this.navigate = ref
   }
   url(url: string) {
-    alert('this.navigate ' + url)
     this.navigate(url)
   }
 }
