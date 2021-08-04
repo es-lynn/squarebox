@@ -3,6 +3,7 @@ import Button from 'antd/es/button'
 import TextArea from 'antd/es/input/TextArea'
 import React, { useState } from 'react'
 import QRCode from 'react-qr-code'
+import { Nav } from '../app/Navigator'
 
 const TextAreaCustom = styled(TextArea)`
   width: 500px;
@@ -50,6 +51,7 @@ export const QRCodeComponent = () => {
       <Button disabled={!textValue} onClick={generateQR}>
         Generate QR
       </Button>
+      <Button onClick={() => Nav.url('/')}>Restart</Button>
       <br />
       <br />
       {showQRGenerator && <QRCode value={valueToQr} />}
