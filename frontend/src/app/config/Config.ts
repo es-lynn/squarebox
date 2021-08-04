@@ -1,3 +1,7 @@
+import { Env } from './env/Env'
+
 export const Cfg = {
-  BACKEND_URL: 'http://192.168.50.96:4000'
+  DEBUG: Env('REACT_APP_DEBUG'),
+
+  BACKEND_URL: Env('REACT_APP_BACKEND_URL')
 }
