@@ -11,7 +11,7 @@ export type QRCodeScannerProps = {
 }
 // TODO: Replace with a real QRCode scanner
 export const QRCodeScanner = ({ size = 256, onQRCodeScanned }: QRCodeScannerProps) => {
-  const [content, setContent] = useState<string>('')
+  const [content, setContent] = useLinkedState(receivingStore)
 
   const handleError = (err: any) => {
     console.error(err)

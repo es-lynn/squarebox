@@ -24,13 +24,6 @@ const TempButton = styled(Button)`
   width: 200px;
 `
 
-const ContentWrapper = styled.div`
-  margin-top: 50px;
-  width: 100vw;
-  display: flex;
-  justify-content: center;
-`
-
 const TempMainWrapper = styled.div`
   width: 100%;
   display: flex;

@@ -1,9 +1,4 @@
-import Text from 'antd/es/typography/Text'
-import TextArea from 'antd/es/input/TextArea'
-import { Button } from 'antd'
 import React from 'react'
-import { useLinkedState } from '../../lib/LinkedState'
-import { onNext, sendingStore } from './SendingStore'
 import styled from '@emotion/styled'
 import { QRCodeComponent } from '../../components/QRCode'
 

@@ -4,6 +4,7 @@ import { TextAreaRef } from 'antd/es/input/TextArea'
 import { useLinkedState } from '../../lib/LinkedState'
 import { copyFromInputRef, receivingStore } from './ReceivingStore'
 import { Button } from 'antd'
+import { Nav } from '../../app/Navigator'
 
 export const ReceivingOutputPage = () => {
   const [content] = useLinkedState(receivingStore)
@@ -15,6 +16,7 @@ export const ReceivingOutputPage = () => {
       {/* @ts-ignore */}
       <textarea ref={textAreaRef} defaultValue={content} />
       <Button onClick={() => copyFromInputRef(textAreaRef)}>Copy Text</Button>
+      <Button onClick={() => Nav.url('/')}>Restart</Button>
     </div>
   )
 }
