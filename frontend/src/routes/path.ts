@@ -10,9 +10,9 @@ export const path = {
     display: '/sending/display'
   },
 
+  index: '/',
   login: {
-    index: '/login',
-    login: '/login'
+    index: '/login'
   },
   setup: {
     index: '/setup'
