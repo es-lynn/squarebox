@@ -3,5 +3,9 @@
   "compilerOptions": {},
   "include": [
     "src"
-  ]
+  ],
+  "baseUrl": ".",
+  "paths": {
+    "react-native": ["./node_modules/react-native-web"]
+  }
 }

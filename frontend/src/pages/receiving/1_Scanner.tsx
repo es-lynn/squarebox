@@ -2,7 +2,9 @@ import React, { useState } from 'react'
 import QrReader from 'react-qr-reader'
 import styled from '@emotion/styled'
 // import { onQRCodeScanned } from './ReceivingStore'
-import { Button, Switch } from 'antd'
+import { Button, Switch } from 'native-base'
+import { withProps, withStyle } from 'reactjs-commons'
+import { View } from 'react-native'
 
 const SetupScannerModeContainer = styled.div`
   display: flex;
@@ -12,18 +14,9 @@ const SetupScannerModeContainer = styled.div`
   alignitems: center;
 `
 
-const CameraToggle = styled(Switch)`
-  width: 200px;
-`
-
-const QRImageReader = styled(QrReader)`
-  width: 100%;
-  transform: rotateY(180deg);
-`
-
-const OrgQRImageReader = styled(QrReader)`
-  width: 100%;
-`
+const CameraToggle = withStyle(Switch)({
+  width: 200
+})
 
 export const ReceivingScannerPage = () => {
   const [cameraMode, setCameraMode] = useState(true)
@@ -77,29 +70,17 @@ export const ReceivingScannerPage = () => {
   return (
     <ContentWrapper>
       <SetupScannerModeContainer>
-        <h2>Which Camera would you like to use to scan?</h2>
-        <CameraToggle
-          checkedChildren="Environment"
-          unCheckedChildren="User"
-          defaultChecked
-          onChange={(checked: boolean) => onCameraToggle(checked)}
-        />
-        {flipImage ? (
+        <h2>Toggle Camera</h2>
+        <CameraToggle onValueChange={(checked: boolean) => onCameraToggle(checked)} />
+        <FlipView flip={flipImage}>
           <QRImageReader
             delay={1000}
             onError={handleError}
             onScan={login}
             facingMode={cameraMode ? 'environment' : 'user'}
           />
-        ) : (
-          <OrgQRImageReader
-            delay={1000}
-            onError={handleError}
-            onScan={login}
-            facingMode={cameraMode ? 'environment' : 'user'}
-          />
-        )}
-        <Button onClick={flipCameraImage}>Mirror Image</Button>
+        </FlipView>
+        <Button onPress={flipCameraImage}>Mirror Image</Button>
         <br />
         <div>Text:</div>
         <div>{scanVal}</div>
@@ -114,3 +95,10 @@ const ContentWrapper = styled.div`
   display: flex;
   justify-content: center;
 `
+
+const FlipView = withStyle(View)<{ flip: boolean }>(props => ({
+  transform: [props.flip ? { rotateY: '0deg' } : { rotateY: '180deg' }]
+}))
+const QRImageReader = withStyle(QrReader)({
+  width: '100%'
+})

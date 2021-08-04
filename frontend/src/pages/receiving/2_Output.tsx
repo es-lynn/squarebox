@@ -1,22 +1,20 @@
 import React, { useRef } from 'react'
-import Text from 'antd/es/typography/Text'
-import { TextAreaRef } from 'antd/es/input/TextArea'
+import { Text, Button } from 'native-base'
 import { useLinkedState } from '../../lib/LinkedState'
 import { copyFromInputRef, receivingStore } from './ReceivingStore'
-import { Button } from 'antd'
 import { Nav } from '../../app/Navigator'
 
 export const ReceivingOutputPage = () => {
   const [content] = useLinkedState(receivingStore)
-  const textAreaRef = useRef<TextAreaRef>()
+  const textAreaRef = useRef<any>()
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }}>
       <Text>2. Your text</Text>
       {/* @ts-ignore */}
       <textarea ref={textAreaRef} defaultValue={content} />
-      <Button onClick={() => copyFromInputRef(textAreaRef)}>Copy Text</Button>
-      <Button onClick={() => Nav.url('/')}>Restart</Button>
+      <Button onPress={() => copyFromInputRef(textAreaRef)}>Copy Text</Button>
+      <Button onPress={() => Nav.url('/')}>Restart</Button>
     </div>
   )
 }
