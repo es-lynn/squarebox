@@ -1,25 +1,39 @@
-import React from 'react'
-import Webcam from 'react-webcam'
+import React, { useState } from 'react'
 import QrReader from 'react-qr-reader'
 import styled from '@emotion/styled'
+// import { onQRCodeScanned } from './ReceivingStore'
+import { Button, Switch } from 'antd'
+
+const SetupScannerModeContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  gap: 10px;
+  alignitems: center;
+`
+
+const CameraToggle = styled(Switch)`
+  width: 200px;
+`
+
+const QRImageReader = styled(QrReader)`
+  width: 100%;
+  transform: rotateY(180deg);
+`
+
+const OrgQRImageReader = styled(QrReader)`
+  width: 100%;
+`
 
 export const ReceivingScannerPage = () => {
-  const webcamRef = React.useRef<Webcam>(null)
-  const [imgSrc, setImgSrc] = React.useState<any>('')
-  const [text, setText] = React.useState('')
+  const [cameraMode, setCameraMode] = useState(true)
+  const [flipImage, setFlipImage] = useState(true)
   const [toScan, setToScan] = React.useState(false)
 
   const [scanVal, setScanVal] = React.useState('')
   const [scanLength, setScanLength] = React.useState('')
   const [numScanned, setNumScanned] = React.useState(0)
-
-  const capture = React.useCallback(() => {
-    if (null !== webcamRef.current) {
-      const imageSrc: any = webcamRef.current.getScreenshot()
-      setImgSrc(imageSrc)
-    }
-  }, [webcamRef, setImgSrc])
-  const handleError = (err: any) => {
+  const handleError = (err: Error) => {
     console.log(err)
   }
   const login = async (hash: string | null) => {
@@ -48,39 +62,55 @@ export const ReceivingScannerPage = () => {
         init = init + hash
         setScanVal(init)
         setNumScanned(initCount)
-        // onQRCodeScanned(hash)
       }
     }
   }
 
-  // const qrScanner = new QrScanner(videoElem, result => console.log('decoded qr code:', result))
+  const onCameraToggle = (checked: boolean) => {
+    setCameraMode(checked)
+  }
+
+  const flipCameraImage = () => {
+    setFlipImage(!flipImage)
+  }
+
   return (
     <ContentWrapper>
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          width: '600px',
-          gap: '10px',
-          alignItems: 'center'
-        }}
-      >
-        {/* <Webcam audio={false} ref={webcamRef} screenshotFormat="image/jpeg" />
-      <Button onClick={capture}>Open Camera</Button>
-      {imgSrc && <img src={imgSrc} />} */}
-        {/* {qrScanner.start()} */}
-        <QrReader delay={1000} onError={handleError} onScan={login} style={{ width: '100%' }} />
-        {/*<QRCodeScanner onQRCodeScanned={onQRCodeScanned} />*/}
+      <SetupScannerModeContainer>
+        <h2>Which Camera would you like to use to scan?</h2>
+        <CameraToggle
+          checkedChildren="Environment"
+          unCheckedChildren="User"
+          defaultChecked
+          onChange={(checked: boolean) => onCameraToggle(checked)}
+        />
+        {flipImage ? (
+          <QRImageReader
+            delay={1000}
+            onError={handleError}
+            onScan={login}
+            facingMode={cameraMode ? 'environment' : 'user'}
+          />
+        ) : (
+          <OrgQRImageReader
+            delay={1000}
+            onError={handleError}
+            onScan={login}
+            facingMode={cameraMode ? 'environment' : 'user'}
+          />
+        )}
+        <Button onClick={flipCameraImage}>Mirror Image</Button>
+        <br />
         <div>Text:</div>
         <div>{scanVal}</div>
-      </div>
+      </SetupScannerModeContainer>
     </ContentWrapper>
   )
 }
 
 const ContentWrapper = styled.div`
-  margin-top: 50px;
-  width: 100vw;
+  margin-top: 20px;
+  width: 90vw;
   display: flex;
   justify-content: center;
 `
