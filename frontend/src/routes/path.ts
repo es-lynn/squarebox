@@ -1,5 +1,4 @@
 export const path = {
-  temp_main: '/tempmain',
   receiving: {
     scanner: '/receiving/scanner',
     output: '/receiving/output',

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import httyp from 'httyp'
-import { Cfg } from '../../../app/config/Config'
+import { Cfg } from '../../app/config/Config'
 import { Text } from 'native-base'
 import QRCode from 'react-qr-code'
 
