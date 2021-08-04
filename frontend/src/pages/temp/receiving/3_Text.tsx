@@ -1,22 +1,22 @@
+import { onQRCodeScanned } from './ReceivingStore'
 import React, { useEffect, useState } from 'react'
-import httyp from 'httyp'
-import { Cfg } from '../../app/config/Config'
 import { Text } from 'native-base'
-import QRCode from 'react-qr-code'
+import httyp from 'httyp'
+import { Cfg } from '../../../app/config/Config'
 
-export const ScannerReceiveQRPage = () => {
-  const [qrcode, setQrcode] = useState<string>()
+export const ReceivingTextPage = () => {
+  const [payload, setPayload] = useState<string>()
   useEffect(() => {
     const retrieveAPI = () => {
-      if (qrcode == null) {
+      if (payload == null) {
         httyp
-          .url(`${Cfg.BACKEND_URL}/api/retrieve-qrcode`)
+          .url(`${Cfg.BACKEND_URL}/api/retrieve-payload`)
           .params({
             id: '1'
           })
-          .get<{ id: string; qrcode: string }>()
+          .get<{ id: string; payload: string }>()
           .then(data => {
-            setQrcode(data.data.qrcode)
+            onQRCodeScanned(data.data.payload)
           })
       } else {
         clearInterval(intervalID)
@@ -24,11 +24,11 @@ export const ScannerReceiveQRPage = () => {
     }
     const intervalID = setInterval(retrieveAPI, 1000)
     return () => clearInterval(intervalID)
-  }, [qrcode])
+  }, [])
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }}>
-      {qrcode ? <QRCode value={qrcode} /> : <Text>Waiting for scanner</Text>}
+      <Text>Waiting for scanner</Text>
     </div>
   )
 }

@@ -1,9 +1,9 @@
 import {} from 'reactjs-commons'
-import { LinkedState } from '../../lib/LinkedState'
-import { Nav } from '../../app/Navigator'
-import { path } from '../../routes/path'
+import { LinkedState } from '../../../lib/LinkedState'
+import { Nav } from '../../../app/Navigator'
+import { path } from '../../../routes/path'
 import httyp from 'httyp'
-import { Cfg } from '../../app/config/Config'
+import { Cfg } from '../../../app/config/Config'
 
 export const sendingStore = new LinkedState<string>('')
 

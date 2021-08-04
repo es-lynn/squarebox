@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { QRCodeComponent } from '../components/QRCode'
+import { QRCodeComponent } from '../../components/QRCode'
 import { SetupScannerModePage } from './setup/2b_SetupScannerMode'
 import styled from '@emotion/styled'
 import { Button } from 'native-base'

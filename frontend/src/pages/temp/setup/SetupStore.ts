@@ -1,5 +1,5 @@
-import { Nav } from '../../app/Navigator'
-import { path } from '../../routes/path'
+import { Nav } from '../../../app/Navigator'
+import { path } from '../../../routes/path'
 
 export const onSelectComputer = () => {
   Nav.url(path.computer.index)

@@ -1,7 +1,7 @@
 import { Button, TextArea } from 'native-base'
 import React, { useState } from 'react'
 import QRCode from 'react-qr-code'
-import { sendQRCodeToServer } from '../pages/sending/SendingStore'
+import { sendQRCodeToServer } from '../pages/temp/sending/SendingStore'
 import { Nav } from '../app/Navigator'
 import { withStyle } from 'reactjs-commons'
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from '@emotion/styled'
-import { QRCodeComponent } from '../../components/QRCode'
+import { QRCodeComponent } from '../../../components/QRCode'
 
 export const SendingInputPage = () => {
   return (
