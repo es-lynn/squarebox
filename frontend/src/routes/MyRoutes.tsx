@@ -18,6 +18,7 @@ import { ScannerReceiveQRPage } from '../pages/temp/scanner/ScannerReceiveQRPage
 import { Home } from '../pages/home/Home'
 import { Login } from '../pages/login/Login'
 import { Setup } from '../pages/setup/Setup'
+import { Computer } from '../pages/computer/Computer'
 
 const MyRoutes = () => {
   const navigate = useNavigate()
@@ -30,6 +31,7 @@ const MyRoutes = () => {
 
       <Route path={path.login.index} element={<Login />} />
       <Route path={path.setup.index} element={<Setup />} />
+      <Route path={path.computer.index} element={<Computer />} />
 
       <Route path={path.temp_main} element={<TempMain />} />
       <Route path={path.sending.input} element={<SendingInputPage />} />
