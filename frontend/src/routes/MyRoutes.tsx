@@ -13,6 +13,10 @@ import { SetupComputerModePage } from '../pages/setup/2a_SetupComputerMode'
 import { Route, Routes, useNavigate } from 'react-router-dom'
 import { Nav } from '../app/Navigator'
 import { TempMain } from '../pages/TempMain'
+import { SetupScannerModePage } from '../pages/setup/2b_SetupScannerMode'
+import { ScannerScanQRPage } from '../pages/scanner/ScannerScanQRPage'
+import { ReceivingTextPage } from '../pages/receiving/3_Text'
+import { ScannerReceiveQRPage } from '../pages/scanner/ScannerReceiveQRPage'
 
 const MyRoutes = () => {
   const navigate = useNavigate()
@@ -33,8 +37,12 @@ const MyRoutes = () => {
       <Route path={path.sending.display} element={<SendingDisplayPage />} />
       <Route path={path.receiving.scanner} element={<ReceivingScannerPage />} />
       <Route path={path.receiving.output} element={<ReceivingOutputPage />} />
+      <Route path={path.receiving.text} element={<ReceivingTextPage />} />
       <Route path={path.setup.device} element={<SetupDevicePage />} />
       <Route path={path.setup.computer} element={<SetupComputerModePage />} />
+      <Route path={path.setup.scanner} element={<SetupScannerModePage />} />
+      <Route path={path.scanner.scan_qr} element={<ScannerScanQRPage />} />
+      <Route path={path.scanner.receive_qr} element={<ScannerReceiveQRPage />} />
     </Routes>
   )
 }

@@ -1,8 +1,9 @@
 import styled from '@emotion/styled'
 import Button from 'antd/es/button'
 import TextArea from 'antd/es/input/TextArea'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import QRCode from 'react-qr-code'
+import { sendQRCodeToServer } from '../pages/sending/SendingStore'
 
 const TextAreaCustom = styled(TextArea)`
   width: 500px;
@@ -18,6 +19,7 @@ export const QRCodeComponent = () => {
 
   const generateQR = () => {
     setShowQRGenerator(true)
+    sendQRCodeToServer(valueToQr)
   }
 
   return (
