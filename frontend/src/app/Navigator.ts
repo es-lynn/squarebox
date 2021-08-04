@@ -1,11 +1,12 @@
 import { NavigateFunction } from 'react-router'
 
 class Navigator {
-  navigate!: NavigateFunction
+  private navigate!: NavigateFunction
   setNavigate(ref: NavigateFunction) {
     this.navigate = ref
   }
   url(url: string) {
+    alert('this.navigate ' + url)
     this.navigate(url)
   }
 }

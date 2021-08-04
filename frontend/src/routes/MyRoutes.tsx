@@ -15,21 +15,20 @@ import { SetupScannerModePage } from '../pages/setup/2b_SetupScannerMode'
 import { ScannerScanQRPage } from '../pages/scanner/ScannerScanQRPage'
 import { ReceivingTextPage } from '../pages/receiving/3_Text'
 import { ScannerReceiveQRPage } from '../pages/scanner/ScannerReceiveQRPage'
+import { Home } from '../pages/home/Home'
+import { Login } from '../pages/login/Login'
 
 const MyRoutes = () => {
   const navigate = useNavigate()
-  useEffect(() => {
-    Nav.setNavigate(navigate)
-  }, [navigate])
-
-  useEffect(() => {
-    Nav.url(path.setup.computer)
-  }, [])
+  Nav.setNavigate(navigate)
 
   return (
     // @ts-ignore
     <Routes>
-      <Route path={'/'} element={<SetupDevicePage />} />
+      <Route path={'/'} element={<Home />} />
+
+      <Route path={path.login.index} element={<Login />} />
+
       <Route path={path.temp_main} element={<TempMain />} />
       <Route path={path.sending.input} element={<SendingInputPage />} />
       <Route path={path.sending.display} element={<SendingDisplayPage />} />

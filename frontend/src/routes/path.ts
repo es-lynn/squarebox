@@ -9,14 +9,27 @@ export const path = {
     input: '/sending/input',
     display: '/sending/display'
   },
+
+  login: {
+    index: '/login',
+    login: '/login'
+  },
+  setup: {
+    index: '/setup',
+    device: '/setup/device',
+    computer: '/setup/computer',
+    scanner: '/setup/scanner'
+  },
   scanner: {
+    index: '/scanner',
     scan_qr: '/scanner/scan-qr',
     receive_qr: '/scanner/receive-qr',
     pair: '/scanner/pair'
   },
-  setup: {
-    device: '/setup/device',
-    computer: '/setup/computer',
-    scanner: '/setup/scanner'
+  computer: {
+    index: '/computer',
+    scan_qr: '/scanner/scan-qr',
+    receive_qr: '/scanner/receive-qr',
+    pair: '/scanner/pair'
   }
 }
