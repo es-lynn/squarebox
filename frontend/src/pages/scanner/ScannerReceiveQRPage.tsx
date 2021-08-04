@@ -3,7 +3,7 @@ import { QRCodeScanner } from '../../components/QRCodeScanner'
 import httyp from 'httyp'
 import { Cfg } from '../../app/config/Config'
 import { onQRCodeScanned } from '../receiving/ReceivingStore'
-import Text from 'antd/es/typography/Text'
+import { Text } from 'native-base'
 import QRCode from 'react-qr-code'
 
 export const ScannerReceiveQRPage = () => {

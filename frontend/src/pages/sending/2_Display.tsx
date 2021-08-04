@@ -1,6 +1,5 @@
-import Text from 'antd/es/typography/Text'
-// import { QRCode } from '../../components/QRCode'
 import React from 'react'
+import { Text } from 'native-base'
 
 export const SendingDisplayPage = () => {
   // const [text] = useLinkedState(sendingStore)

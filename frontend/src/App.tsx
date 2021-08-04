@@ -2,7 +2,6 @@
 
 import React from 'react'
 import './App.css'
-import 'antd/dist/antd.css'
 import { MyRoutes } from './routes/MyRoutes'
 import { HashRouter } from 'react-router-dom'
 

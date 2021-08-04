@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import QrReader from 'react-qr-reader'
 import styled from '@emotion/styled'
 // import { onQRCodeScanned } from './ReceivingStore'
-import { Button, Switch } from 'antd'
+import { Button, Switch } from 'native-base'
+import { withStyle } from 'reactjs-commons'
 
 const SetupScannerModeContainer = styled.div`
   display: flex;
@@ -12,9 +13,9 @@ const SetupScannerModeContainer = styled.div`
   alignitems: center;
 `
 
-const CameraToggle = styled(Switch)`
-  width: 200px;
-`
+const CameraToggle = withStyle(Switch)({
+  width: 200
+})
 
 const QRImageReader = styled(QrReader)`
   width: 100%;
@@ -77,13 +78,8 @@ export const ReceivingScannerPage = () => {
   return (
     <ContentWrapper>
       <SetupScannerModeContainer>
-        <h2>Which Camera would you like to use to scan?</h2>
-        <CameraToggle
-          checkedChildren="Environment"
-          unCheckedChildren="User"
-          defaultChecked
-          onChange={(checked: boolean) => onCameraToggle(checked)}
-        />
+        <h2>Toggle Camera</h2>
+        <CameraToggle onValueChange={(checked: boolean) => onCameraToggle(checked)} />
         {flipImage ? (
           <QRImageReader
             delay={1000}
@@ -99,7 +95,7 @@ export const ReceivingScannerPage = () => {
             facingMode={cameraMode ? 'environment' : 'user'}
           />
         )}
-        <Button onClick={flipCameraImage}>Mirror Image</Button>
+        <Button onPress={flipCameraImage}>Mirror Image</Button>
         <br />
         <div>Text:</div>
         <div>{scanVal}</div>

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { QRCodeComponent } from '../components/QRCode'
 import { SetupScannerModePage } from './setup/2b_SetupScannerMode'
 import styled from '@emotion/styled'
-import { Button } from 'antd'
+import { Button } from 'native-base'
 
 const TempButton = styled(Button)`
   width: 200px;
@@ -30,9 +30,9 @@ const TempMain = () => {
   return (
     <TempMainWrapper>
       <h2>Please choose an option:</h2>
-      <TempButton onClick={() => setShowStatus('createQR')}>Generate QR</TempButton>
+      <TempButton onPress={() => setShowStatus('createQR')}>Generate QR</TempButton>
       <br />
-      <TempButton onClick={() => setShowStatus('scanQR')}>Scan QR</TempButton>
+      <TempButton onPress={() => setShowStatus('scanQR')}>Scan QR</TempButton>
       <ContentWrapper>
         {showStatus === 'createQR' && <QRCodeComponent />}
         {showStatus === 'scanQR' && <SetupScannerModePage />}

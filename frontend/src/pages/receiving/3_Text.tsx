@@ -1,9 +1,7 @@
 import { useLinkedState } from '../../lib/LinkedState'
 import { copyFromInputRef, onQRCodeScanned, receivingStore } from './ReceivingStore'
 import React, { useEffect, useRef, useState } from 'react'
-import { TextAreaRef } from 'antd/es/input/TextArea'
-import Text from 'antd/es/typography/Text'
-import { Button } from 'antd'
+import { Text } from 'native-base'
 import httyp from 'httyp'
 import { Cfg } from '../../app/config/Config'
 

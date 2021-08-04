@@ -1,15 +1,9 @@
-import styled from '@emotion/styled'
-import Button from 'antd/es/button'
-import TextArea from 'antd/es/input/TextArea'
+import { Button, TextArea } from 'native-base'
 import React, { useEffect, useState } from 'react'
 import QRCode from 'react-qr-code'
 import { sendQRCodeToServer } from '../pages/sending/SendingStore'
 import { Nav } from '../app/Navigator'
-
-const TextAreaCustom = styled(TextArea)`
-  width: 500px;
-  margin-bottom: 50px;
-`
+import { withStyle } from 'reactjs-commons'
 
 export const QRCodeComponent = () => {
   const [valueToQr, setValueToQR] = useState('')
@@ -18,9 +12,6 @@ export const QRCodeComponent = () => {
   const textLengthRegex = /.{1,100}/g //adjust the max character to get the QR code size
   const delay = (ms: number) => new Promise(res => setTimeout(res, ms))
   const videoFrameRateInMS = 1000
-  const onInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setTextValue(e.target.value)
-  }
 
   const generateQR = async () => {
     const strArray = textValue.match(textLengthRegex)
@@ -45,18 +36,19 @@ export const QRCodeComponent = () => {
 
   return (
     <div>
-      <TextAreaCustom
-        rows={6}
-        onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => onInputChange(e)}
-        showCount
-      />
-      <Button disabled={!textValue} onClick={generateQR}>
+      <TextAreaCustom onChangeText={setTextValue} />
+      <Button disabled={!textValue} onPress={generateQR}>
         Generate QR
       </Button>
-      <Button onClick={() => Nav.url('/')}>Restart</Button>
+      <Button onPress={() => Nav.url('/')}>Restart</Button>
       <br />
       <br />
       {showQRGenerator && <QRCode value={valueToQr} />}
     </div>
   )
 }
+
+const TextAreaCustom = withStyle(TextArea)({
+  width: 500,
+  marginBottom: 20
+})

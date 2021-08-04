@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Button, Input } from 'antd'
+import { Button, Input } from 'native-base'
 import { useLinkedState } from '../lib/LinkedState'
 import { onQRCodeScanned, receivingStore } from '../pages/receiving/ReceivingStore'
 import QrReader from 'react-qr-reader'
@@ -32,8 +32,8 @@ export const QRCodeScanner = ({ size = 256, onQRCodeScanned }: QRCodeScannerProp
       }}
     >
       <QrReader delay={1000} onError={handleError} onScan={onScan} style={{ width: '100%' }} />
-      <Input value={content} onChange={e => setContent(e.target.value)} />
-      <Button onClick={() => onQRCodeScanned(content)}>onQRCodeScanned()</Button>
+      <Input value={content} onChangeText={text => setContent(text)} />
+      <Button onPress={() => onQRCodeScanned(content)}>onQRCodeScanned()</Button>
     </div>
   )
 }
