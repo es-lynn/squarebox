@@ -1,8 +1,8 @@
 import React, { useRef } from 'react'
 import { Text, Button } from 'native-base'
-import { useLinkedState } from '../../lib/LinkedState'
+import { useLinkedState } from '../../../lib/LinkedState'
 import { copyFromInputRef, receivingStore } from './ReceivingStore'
-import { Nav } from '../../app/Navigator'
+import { Nav } from '../../../app/Navigator'
 
 export const ReceivingOutputPage = () => {
   const [content] = useLinkedState(receivingStore)

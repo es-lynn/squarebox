@@ -1,7 +1,7 @@
-import { Button, TextArea } from 'native-base'
+import { Button } from 'native-base'
 import React, { useState } from 'react'
 import QRCode from 'react-qr-code'
-import { sendQRCodeToServer } from '../pages/sending/SendingStore'
+import { sendQRCodeToServer } from '../pages/computer/sending/SendingStore'
 import { Nav } from '../app/Navigator'
 import { withStyle } from 'reactjs-commons'
 
@@ -36,7 +36,7 @@ export const QRCodeComponent = () => {
 
   return (
     <div>
-      <TextAreaCustom onChangeText={setTextValue} />
+      <TextAreaCustom onChange={e => setTextValue(e.target.value)} />
       <Button disabled={!textValue} onPress={generateQR}>
         Generate QR
       </Button>
@@ -48,7 +48,9 @@ export const QRCodeComponent = () => {
   )
 }
 
-const TextAreaCustom = withStyle(TextArea)({
+// sorry something broke when I changed from ant-design to native base
+// so i changed the implementation to use html5 textarea
+const TextAreaCustom = withStyle('textarea')({
   width: 500,
   marginBottom: 20
 })

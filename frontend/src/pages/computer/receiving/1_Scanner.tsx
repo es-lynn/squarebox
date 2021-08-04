@@ -3,7 +3,7 @@ import QrReader from 'react-qr-reader'
 import styled from '@emotion/styled'
 // import { onQRCodeScanned } from './ReceivingStore'
 import { Button, Switch } from 'native-base'
-import { withProps, withStyle } from 'reactjs-commons'
+import { withStyle } from 'reactjs-commons'
 import { View } from 'react-native'
 
 const SetupScannerModeContainer = styled.div`

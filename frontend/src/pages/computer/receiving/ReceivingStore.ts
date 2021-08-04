@@ -1,6 +1,6 @@
-import { LinkedState } from '../../lib/LinkedState'
-import { Nav } from '../../app/Navigator'
-import { path } from '../../routes/path'
+import { LinkedState } from '../../../lib/LinkedState'
+import { Nav } from '../../../app/Navigator'
+import { path } from '../../../routes/path'
 
 export const receivingStore = new LinkedState<string>('')
 

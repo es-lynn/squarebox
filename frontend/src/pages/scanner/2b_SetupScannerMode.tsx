@@ -1,7 +1,9 @@
 import React from 'react'
 
 import { Button } from 'native-base'
-import { onSelectReceiveQR, onSelectScannerPair, onSelectScanQR } from './SetupStore'
+
+import { Nav } from '../../app/Navigator'
+import { path } from '../../routes/path'
 
 export const SetupScannerModePage = () => {
   return (
@@ -12,3 +14,9 @@ export const SetupScannerModePage = () => {
     </div>
   )
 }
+
+export const onSelectScanQR = () => Nav.url(path.scanner.scan_qr)
+
+export const onSelectReceiveQR = () => Nav.url(path.scanner.receive_qr)
+
+export const onSelectScannerPair = () => Nav.url(path.scanner.pair)

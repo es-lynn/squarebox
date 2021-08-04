@@ -2,7 +2,7 @@ import { onQRCodeScanned } from './ReceivingStore'
 import React, { useEffect, useState } from 'react'
 import { Text } from 'native-base'
 import httyp from 'httyp'
-import { Cfg } from '../../app/config/Config'
+import { Cfg } from '../../../app/config/Config'
 
 export const ReceivingTextPage = () => {
   const [payload, setPayload] = useState<string>()
