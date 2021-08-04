@@ -1,6 +1,8 @@
 import React from 'react'
 import { Button } from 'antd'
-import { onSelectReceiving, onSelectSending } from './SetupStore'
+import { onSelectReceiving, onSelectReceiveText, onSelectSending } from './SetupStore'
+import { QRCodeComponent } from '../../components/QRCode'
+import { SetupScannerModePage } from './2b_SetupScannerMode'
 import styled from '@emotion/styled'
 
 export const SetupComputerModePage = () => {
@@ -11,6 +13,8 @@ export const SetupComputerModePage = () => {
         <TempButton onClick={onSelectSending}>Generate QR</TempButton>
         <br />
         <TempButton onClick={onSelectReceiving}>Scan QR</TempButton>
+        <br />
+        <TempButton onClick={onSelectReceiveText}>Receive Text</TempButton>
       </div>
     </TempMainWrapper>
   )

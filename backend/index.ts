@@ -1,3 +1,5 @@
-export default {}
+import { server } from './src/app/App'
 
-console.log('hello world')
+server.listen(4000)
+
+console.info('Server started')
