@@ -2,13 +2,16 @@ import React from 'react'
 import Webcam from 'react-webcam'
 import QrReader from 'react-qr-reader'
 import styled from '@emotion/styled'
-import { onQRCodeScanned } from './ReceivingStore'
-import { QRCodeScanner } from '../../components/QRCodeScanner'
 
 export const ReceivingScannerPage = () => {
   const webcamRef = React.useRef<Webcam>(null)
   const [imgSrc, setImgSrc] = React.useState<any>('')
   const [text, setText] = React.useState('')
+  const [toScan, setToScan] = React.useState(false)
+
+  const [scanVal, setScanVal] = React.useState('')
+  const [scanLength, setScanLength] = React.useState('')
+  const [numScanned, setNumScanned] = React.useState(0)
 
   const capture = React.useCallback(() => {
     if (null !== webcamRef.current) {
@@ -20,9 +23,33 @@ export const ReceivingScannerPage = () => {
     console.log(err)
   }
   const login = async (hash: string | null) => {
-    console.log('scanning....')
     if (hash) {
-      onQRCodeScanned(hash)
+      const checkStart = hash.split('--||SQUAREBOXSTART||--')
+      const checkEnd = hash.split('--||SQUAREBOXEND||--')
+      if (checkStart.length === 2) {
+        if (!toScan) {
+          setToScan(true)
+          setScanLength(checkStart[0])
+        }
+      } else if (checkEnd.length === 2) {
+        if (toScan) {
+          if (numScanned.toString() != scanLength) {
+            alert('did not scan all. Scanned: ' + numScanned)
+            setScanVal('')
+            setNumScanned(0)
+          } else {
+            alert('scan done')
+            setToScan(false)
+          }
+        }
+      } else if (toScan) {
+        let init = scanVal
+        const initCount = numScanned + 1
+        init = init + hash
+        setScanVal(init)
+        setNumScanned(initCount)
+        // onQRCodeScanned(hash)
+      }
     }
   }
 
@@ -44,6 +71,8 @@ export const ReceivingScannerPage = () => {
         {/* {qrScanner.start()} */}
         <QrReader delay={1000} onError={handleError} onScan={login} style={{ width: '100%' }} />
         {/*<QRCodeScanner onQRCodeScanned={onQRCodeScanned} />*/}
+        <div>Text:</div>
+        <div>{scanVal}</div>
       </div>
     </ContentWrapper>
   )

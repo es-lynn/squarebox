@@ -2,6 +2,7 @@ import React from 'react'
 import Webcam from 'react-webcam'
 // import QrScanner from 'qr-scanner'
 import QrReader from 'react-qr-reader'
+
 export const SetupScannerModePage = () => {
   const webcamRef = React.useRef<Webcam>(null)
   const [imgSrc, setImgSrc] = React.useState<any>('')
@@ -23,7 +24,6 @@ export const SetupScannerModePage = () => {
     }
   }
 
-  // const qrScanner = new QrScanner(videoElem, result => console.log('decoded qr code:', result))
   return (
     <div
       style={{
