@@ -17,19 +17,15 @@ import {
   SecondaryButton,
   TwoButtonGrid
 } from '../../style/style'
+import { contentState } from './ScannerScanConfirmationPage'
 
 export const ScannerScanQRPage = () => {
   const [cameraMode, setCameraMode] = useState(true)
   const [flipImage, setFlipImage] = useState(true)
 
   const onQRCodeScanned = async (content: string) => {
-    // @ts-ignore
-    const username: string = credentials.state()['username']
     try {
-      await API.send_payload({
-        id: username,
-        payload: content
-      })
+      contentState.set(content)
       Nav.url(path.scanner.success)
     } catch (e) {
       console.error(e)
@@ -37,6 +33,7 @@ export const ScannerScanQRPage = () => {
   }
 
   const login = (hash: string | null) => {
+    console.info('qrcode:', hash)
     if (hash) {
       onQRCodeScanned(hash)
     }
