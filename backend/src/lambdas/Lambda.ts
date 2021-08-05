@@ -1,13 +1,29 @@
-export const send_data = async (data: { name: string }): Promise<string> => {
+import { DB } from '../app/db/Database'
+
+type APISendPayloadReq = { id: string; payload: string }
+
+export const send_payload = async (data: APISendPayloadReq): Promise<{}> => {
   // const posts = await DB_Posts.scan()
   // const sortedPosts = posts.sort((a, b) => b.date.getTime() - a.date.getTime())
   // return sortedPosts
-  return 'hello world' + data.name
+  await DB.PayloadData.insert({
+    id: data.id,
+    payload_data: data.payload
+  })
+  return {}
 }
 
-export const retrieve_data = async (data: { name: string }): Promise<string> => {
-  // const posts = await DB_Posts.scan()
-  // const sortedPosts = posts.sort((a, b) => b.date.getTime() - a.date.getTime())
-  // return sortedPosts
-  return 'hello world' + data.name
+type APIRetrievePayloadReq = { id: string }
+type APIRetrievePayloadRes = { id: string; payload: string }
+
+export const retrieve_payload = async (
+  data: APIRetrievePayloadReq
+): Promise<APIRetrievePayloadRes> => {
+  const payload = await DB.PayloadData.select(data.id)
+  await DB.PayloadData.delete(data.id)
+
+  return {
+    id: payload.id,
+    payload: payload.payload_data
+  }
 }

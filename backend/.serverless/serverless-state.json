@@ -14,8 +14,9 @@
         "SERVICE": "squarebox-backend",
         "ENVIRONMENT": "develop",
         "AWSC_REGION": "ap-southeast-1",
-        "DB_DEL_POLICY": "Retain",
-        "DB_DATA": "data",
+        "DB_DEL_POLICY": "Delete",
+        "DB_PAYLOAD_DATA": "payloaddata",
+        "DB_QRCODE_DATA": "qrcodedata",
         "CORS_WHITELIST": "[\"*\"]"
       },
       "lambdaHashingVersion": "20201221",
@@ -33,7 +34,13 @@
           "Resource": [
             {
               "Fn::GetAtt": [
-                "data",
+                "payloaddata",
+                "Arn"
+              ]
+            },
+            {
+              "Fn::GetAtt": [
+                "qrcodedata",
                 "Arn"
               ]
             }
@@ -213,7 +220,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/squarebox-backend/develop/1628139472949-2021-08-05T04:57:52.949Z/squarebox-backend.zip"
+                "S3Key": "serverless/squarebox-backend/develop/1628141363325-2021-08-05T05:29:23.325Z/squarebox-backend.zip"
               },
               "Handler": "dist/handler.retrieve_data",
               "Runtime": "nodejs12.x",
@@ -225,8 +232,9 @@
                   "SERVICE": "squarebox-backend",
                   "ENVIRONMENT": "develop",
                   "AWSC_REGION": "ap-southeast-1",
-                  "DB_DEL_POLICY": "Retain",
-                  "DB_DATA": "data",
+                  "DB_DEL_POLICY": "Delete",
+                  "DB_PAYLOAD_DATA": "payloaddata",
+                  "DB_QRCODE_DATA": "qrcodedata",
                   "CORS_WHITELIST": "[\"*\"]"
                 }
               },
@@ -248,7 +256,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/squarebox-backend/develop/1628139472949-2021-08-05T04:57:52.949Z/squarebox-backend.zip"
+                "S3Key": "serverless/squarebox-backend/develop/1628141363325-2021-08-05T05:29:23.325Z/squarebox-backend.zip"
               },
               "Handler": "dist/handler.send_data",
               "Runtime": "nodejs12.x",
@@ -260,8 +268,9 @@
                   "SERVICE": "squarebox-backend",
                   "ENVIRONMENT": "develop",
                   "AWSC_REGION": "ap-southeast-1",
-                  "DB_DEL_POLICY": "Retain",
-                  "DB_DATA": "data",
+                  "DB_DEL_POLICY": "Delete",
+                  "DB_PAYLOAD_DATA": "payloaddata",
+                  "DB_QRCODE_DATA": "qrcodedata",
                   "CORS_WHITELIST": "[\"*\"]"
                 }
               },
@@ -276,24 +285,24 @@
               "SendUnderscoredataLogGroup"
             ]
           },
-          "RetrieveUnderscoredataLambdaVersionaqdl4gTyCmH3N7PRLbs5tjeC7jhMVu1kftiiB5PPs": {
+          "RetrieveUnderscoredataLambdaVersionRoW1QVej1vK2QSDVcxk6HX3N93A09a95bps5hw9uBA": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "RetrieveUnderscoredataLambdaFunction"
               },
-              "CodeSha256": "5hUV9NBpwkuOvOhe6qum821ClWYq7S+ExhKWpkrrxes="
+              "CodeSha256": "y7Qe5KLLcHfCpSEfMIyEYTZqcJiu5JAUQ9CIV1g8ifI="
             }
           },
-          "SendUnderscoredataLambdaVersion4du9ZNqH1sUnivLs29vbpaj4NWy4jHwsFFIDKn79L0": {
+          "SendUnderscoredataLambdaVersionWud8n5kn5yrLMuaZ4YvV0P2nyyEHohDGhdyoUOSk": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "SendUnderscoredataLambdaFunction"
               },
-              "CodeSha256": "5hUV9NBpwkuOvOhe6qum821ClWYq7S+ExhKWpkrrxes="
+              "CodeSha256": "y7Qe5KLLcHfCpSEfMIyEYTZqcJiu5JAUQ9CIV1g8ifI="
             }
           },
           "ApiGatewayRestApi": {
@@ -430,7 +439,7 @@
               "SendUnderscoredataLambdaPermissionApiGateway"
             ]
           },
-          "ApiGatewayDeployment1628139468663": {
+          "ApiGatewayDeployment1628141360087": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -517,11 +526,31 @@
               }
             }
           },
-          "data": {
+          "payloaddata": {
             "Type": "AWS::DynamoDB::Table",
-            "DeletionPolicy": "Retain",
+            "DeletionPolicy": "Delete",
             "Properties": {
-              "TableName": "squarebox-backend-develop-data",
+              "TableName": "squarebox-backend-develop-payloaddata",
+              "AttributeDefinitions": [
+                {
+                  "AttributeName": "id",
+                  "AttributeType": "S"
+                }
+              ],
+              "KeySchema": [
+                {
+                  "AttributeName": "id",
+                  "KeyType": "HASH"
+                }
+              ],
+              "BillingMode": "PAY_PER_REQUEST"
+            }
+          },
+          "qrcodedata": {
+            "Type": "AWS::DynamoDB::Table",
+            "DeletionPolicy": "Delete",
+            "Properties": {
+              "TableName": "squarebox-backend-develop-qrcodedata",
               "AttributeDefinitions": [
                 {
                   "AttributeName": "id",
@@ -550,7 +579,7 @@
           "RetrieveUnderscoredataLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "RetrieveUnderscoredataLambdaVersionaqdl4gTyCmH3N7PRLbs5tjeC7jhMVu1kftiiB5PPs"
+              "Ref": "RetrieveUnderscoredataLambdaVersionRoW1QVej1vK2QSDVcxk6HX3N93A09a95bps5hw9uBA"
             },
             "Export": {
               "Name": "sls-squarebox-backend-develop-RetrieveUnderscoredataLambdaFunctionQualifiedArn"
@@ -559,7 +588,7 @@
           "SendUnderscoredataLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "SendUnderscoredataLambdaVersion4du9ZNqH1sUnivLs29vbpaj4NWy4jHwsFFIDKn79L0"
+              "Ref": "SendUnderscoredataLambdaVersionWud8n5kn5yrLMuaZ4YvV0P2nyyEHohDGhdyoUOSk"
             },
             "Export": {
               "Name": "sls-squarebox-backend-develop-SendUnderscoredataLambdaFunctionQualifiedArn"
@@ -708,7 +737,7 @@
         "timeout": 15,
         "runtime": "nodejs12.x",
         "vpc": {},
-        "versionLogicalId": "RetrieveUnderscoredataLambdaVersionaqdl4gTyCmH3N7PRLbs5tjeC7jhMVu1kftiiB5PPs"
+        "versionLogicalId": "RetrieveUnderscoredataLambdaVersionRoW1QVej1vK2QSDVcxk6HX3N93A09a95bps5hw9uBA"
       },
       "send_data": {
         "handler": "dist/handler.send_data",
@@ -727,16 +756,36 @@
         "timeout": 15,
         "runtime": "nodejs12.x",
         "vpc": {},
-        "versionLogicalId": "SendUnderscoredataLambdaVersion4du9ZNqH1sUnivLs29vbpaj4NWy4jHwsFFIDKn79L0"
+        "versionLogicalId": "SendUnderscoredataLambdaVersionWud8n5kn5yrLMuaZ4YvV0P2nyyEHohDGhdyoUOSk"
       }
     },
     "resources": {
       "Resources": {
-        "data": {
+        "payloaddata": {
           "Type": "AWS::DynamoDB::Table",
-          "DeletionPolicy": "Retain",
+          "DeletionPolicy": "Delete",
           "Properties": {
-            "TableName": "squarebox-backend-develop-data",
+            "TableName": "squarebox-backend-develop-payloaddata",
+            "AttributeDefinitions": [
+              {
+                "AttributeName": "id",
+                "AttributeType": "S"
+              }
+            ],
+            "KeySchema": [
+              {
+                "AttributeName": "id",
+                "KeyType": "HASH"
+              }
+            ],
+            "BillingMode": "PAY_PER_REQUEST"
+          }
+        },
+        "qrcodedata": {
+          "Type": "AWS::DynamoDB::Table",
+          "DeletionPolicy": "Delete",
+          "Properties": {
+            "TableName": "squarebox-backend-develop-qrcodedata",
             "AttributeDefinitions": [
               {
                 "AttributeName": "id",
@@ -783,7 +832,7 @@
     "artifact": "/Users/jaslyn/Documents/git/govtech/squarebox/backend/.serverless/squarebox-backend.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/squarebox-backend/develop/1628139472949-2021-08-05T04:57:52.949Z",
+    "artifactDirectoryName": "serverless/squarebox-backend/develop/1628141363325-2021-08-05T05:29:23.325Z",
     "artifact": "squarebox-backend.zip"
   }
 }

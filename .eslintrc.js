@@ -23,6 +23,7 @@ module.exports = {
     // this is the stupidest rule i've ever seen and whoever created it deserves to be shot
     '@typescript-eslint/ban-ts-comment': 'off',
     // use consistent-return instead
-    '@typescript-eslint/explicit-module-boundary-types': 'off'
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
+    '@typescript-eslint/ban-types': 'warn'
   }
 }

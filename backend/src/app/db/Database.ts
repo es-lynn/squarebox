@@ -2,10 +2,14 @@ import { NoSQLDatabase } from '@aelesia/commons/dist/src/aws/dynamodb/NoSQLDatab
 import { Cfg } from '../config/Config'
 import { AwsDynamodb } from '@aelesia/commons/dist/src/aws/dynamodb/AwsDynamodb'
 
-const Data: NoSQLDatabase<{
+const PayloadData: NoSQLDatabase<{
   id: string
   payload_data: string
-  qrcode_data: string
-}> = new AwsDynamodb(Cfg.REGION, 'DATA')
+}> = new AwsDynamodb(Cfg.REGION, Cfg.DB_PAYLOAD_DATA)
 
-export const DB = { Data }
+const QRCodeData: NoSQLDatabase<{
+  id: string
+  payload_data: string
+}> = new AwsDynamodb(Cfg.REGION, Cfg.DB_QRCODE_DATA)
+
+export const DB = { PayloadData, QRCodeData }
