@@ -1,3 +1,3 @@
 cd ./frontend
 yarn build
-mv ./build/index.html ../../squarebox-dist/index.html
+mv ./build/index.html ../../squarebox-dist/dopple-scanner.html
