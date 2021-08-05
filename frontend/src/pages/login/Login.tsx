@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { configureCredentials } from './Login.func'
 import { PageView } from '../../components/business/PageView'
 import styled from 'styled-components/native'
@@ -14,6 +14,9 @@ import {
 } from '../../style/style'
 import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons'
 import { SVGLock } from '../../images/icons/SVGLock'
+import { Text } from 'react-native'
+import { Regex } from "@aelesia/commons";
+import { RegexTest } from "@aelesia/commons/dist/src/collections/Regex";
 
 const FrontPageImg = styledHtml.img`
   width: 192px;
@@ -41,7 +44,24 @@ margin-bottom: 40px;
 
 export const Login = () => {
   const [email, setEmail] = useState<string>('')
+  const [emailError, setEmailError] = useState<boolean>(false)
+  useEffect(() => {
+    if (email !== '' && !RegexTest.email(email)) {
+      setEmailError(true)
+    } else {
+      setEmailError(false)
+    }
+  }, [email])
+
   const [password, setPassword] = useState<string>('')
+  const [passwordError, setPasswordError] = useState<boolean>(false)
+  useEffect(() => {
+    if (password !== '' && password.length < 8) {
+      setPasswordError(true)
+    } else {
+      setPasswordError(false)
+    }
+  }, [password])
 
   return (
     <PageView>
@@ -53,11 +73,13 @@ export const Login = () => {
       <InputContainer>
         {/* <PhoneInput addonBefore="+65" placeholder="Your Phone Number" /> */}
         <CustomInput placeholder="Your Email" onChange={(e: any) => setEmail(e.target.value)} />
+        {emailError && <Text style={{color: 'red', marginTop: -16}}>Must be valid email</Text>}
         <PassWordInput
           prefix={<SVGLock />}
           onChange={e => setPassword(e.target.value)}
           iconRender={visible => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
         />
+        {passwordError && <Text style={{color: 'red', marginTop: -16}}>Must be at least 8 characters</Text>}
       </InputContainer>
       {/* <CustomInput
         style={{ borderColor: 'red' }}
@@ -69,6 +91,7 @@ export const Login = () => {
       {/* <Input variant="rounded" placeholder={'Password'} onChangeText={setPassword} /> */}
       <TwoButtonGrid>
         <PrimaryButton
+          disabled={passwordError || emailError || password==='' || email ===''}
           onPress={() => {
             configureCredentials({
               mode: 'online',
