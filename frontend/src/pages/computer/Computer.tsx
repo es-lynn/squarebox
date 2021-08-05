@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { PageView } from '../../components/business/PageView'
 import { Button, Text } from 'native-base'
 import { BodyText, HeaderText, PrimaryButton, TwoButtonGrid } from '../../style/style'
@@ -6,6 +6,10 @@ import { logout, onSelectReceive, onSelectSend, onSelectSyncText } from './Compu
 import styled from 'styled-components/native'
 import styledHtml from 'styled-components'
 import HomeImg from '../../images/home_page.svg'
+import { credentials } from '../State'
+import httyp from 'httyp/index'
+import { Cfg } from '../../app/config/Config'
+import { API } from '../../services/API'
 
 const AfterLoginImage = styledHtml.img`
   width: 331px;
@@ -26,9 +30,25 @@ const ParaBottomText = styled(BodyText)`
 `
 
 export const Computer = () => {
+  useEffect(() => {
+    if (credentials.state()?.mode === 'online') {
+      // @ts-ignore
+      const username: string = credentials.state()['username']
+      const retrieveAPI = async () => {
+        const data = await API.retrieve_payload({
+          id: username
+        })
+        alert(JSON.stringify(data)) // TODO: Change
+      }
+
+      const intervalID = setInterval(retrieveAPI, 1000)
+      return () => clearInterval(intervalID)
+    }
+  }, [])
+
   return (
     <PageView>
-      <HeaderText>Hello Dave! 👋</HeaderText>
+      <HeaderText>Hello ! 👋</HeaderText>
       <HeaderText>Welcome back!</HeaderText>
       <AfterLoginImage src={HomeImg} alt="HomeImg" />
       <ParaTopText>Please choose an option</ParaTopText>
