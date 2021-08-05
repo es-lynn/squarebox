@@ -1,5 +1,5 @@
 import * as lambda from './src/lambdas/Lambda'
-import { LambdaAPI, LambdaConfig } from '@aelesia/commons/dist/src/aws/lambda/LambdaAPI'
+import { LambdaConfig, LambdaAPI } from '@aelesia/commons/dist/src/aws/lambda/LambdaAPI'
 import { Cfg } from './src/app/config/Config'
 
 LambdaConfig.whitelist = Cfg.CORS_WHITELIST

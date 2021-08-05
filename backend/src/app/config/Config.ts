@@ -1,7 +1,7 @@
 import { Env, EnvAWSResource } from './env/Env'
 
 export const Cfg = {
-  CORS_WHITELIST: Env('CORS_WHITELIST'),
+  CORS_WHITELIST: ['*'],
   REGION: Env('AWSC_REGION'),
 
   DB_PAYLOAD_DATA: EnvAWSResource('DB_PAYLOAD_DATA'),

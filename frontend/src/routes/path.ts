@@ -26,6 +26,7 @@ export const path = {
     index: '/computer',
     scan_qr: '/scanner/scan-qr',
     receive_qr: '/scanner/receive-qr',
+    sync_qr: '/computer/sync-qr',
     pair: '/scanner/pair'
   }
 }
