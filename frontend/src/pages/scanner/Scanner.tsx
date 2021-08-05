@@ -4,7 +4,7 @@ import { Nav } from '../../app/Navigator'
 import { path } from '../../routes/path'
 import { PageView } from '../../components/business/PageView'
 import { BodyText, HeaderText, PrimaryButton, TwoButtonGrid } from '../../style/style'
-import ScannerHomeImg from '../../images/scanner_home_page.svg'
+import {SVGScannerHomePage} from "../../images/SVGScannerHomePage";
 import { logout } from '../computer/Computer.func'
 import styledHtml from 'styled-components'
 import { credentials } from '../State'
@@ -34,7 +34,7 @@ export const SetupScannerModePage = () => {
   return (
     <PageView>
       <HeaderText>{'Hello Jason!\nWelcome back!'}</HeaderText>
-      <AfterLoginImage src={ScannerHomeImg} alt="HomeImg" />
+      <SVGScannerHomePage/>
       <BodyText style={{ marginTop: 16, marginBottom: 16 }}>
         {"Scan the code\nand you're set to go!"}
       </BodyText>
