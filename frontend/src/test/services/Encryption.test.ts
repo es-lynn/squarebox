@@ -1,7 +1,4 @@
-import { API } from '../../services/API'
-import { Cfg } from '../../app/config/Config'
-import { decrypt, encrypt } from "../../services/EncryptionService";
-
+import { decrypt, encrypt } from '../../services/EncryptionService'
 
 describe('Encryption', () => {
   test('encrypt', async () => {

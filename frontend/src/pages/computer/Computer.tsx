@@ -11,7 +11,7 @@ import { receivingStore } from './receiving/ReceivingStore'
 import { Nav } from '../../app/Navigator'
 import { path } from '../../routes/path'
 import { useLinkedState } from '../../lib/LinkedState'
-import { decrypt } from "../../services/EncryptionService";
+import { decrypt } from '../../services/EncryptionService'
 
 const AfterLoginImage = styledHtml.img`
   width: 331px;

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 
 import { Nav } from '../../app/Navigator'
 import { path } from '../../routes/path'
@@ -11,7 +11,7 @@ import { credentials } from '../State'
 import { API } from '../../services/API'
 import { scannerQRCode } from './ScannerRetrieveQRPage'
 import { useLinkedState } from '../../lib/LinkedState'
-import { decrypt } from "../../services/EncryptionService";
+import { decrypt } from '../../services/EncryptionService'
 
 export const SetupScannerModePage = () => {
   useEffect(() => {

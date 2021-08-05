@@ -4,7 +4,7 @@ import { Nav } from '../../../app/Navigator'
 import { path } from '../../../routes/path'
 import { credentials } from '../../State'
 import { API } from '../../../services/API'
-import { encrypt } from "../../../services/EncryptionService";
+import { encrypt } from '../../../services/EncryptionService'
 
 export const sendingStore = new LinkedState<string>('')
 

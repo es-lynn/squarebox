@@ -8,7 +8,7 @@ import styledHtml from 'styled-components'
 import { LinkedState, useLinkedState } from '../../lib/LinkedState'
 import { credentials } from '../State'
 import { API } from '../../services/API'
-import { encrypt } from "../../services/EncryptionService";
+import { encrypt } from '../../services/EncryptionService'
 
 export const contentState = new LinkedState<string>('')
 
