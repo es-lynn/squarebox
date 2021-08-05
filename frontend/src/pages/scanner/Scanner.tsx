@@ -11,17 +11,20 @@ import { credentials } from '../State'
 import { API } from '../../services/API'
 import { scannerQRCode } from './ScannerRetrieveQRPage'
 import { useLinkedState } from '../../lib/LinkedState'
+import { decrypt } from "../../services/EncryptionService";
 
 export const SetupScannerModePage = () => {
   useEffect(() => {
     if (credentials.state()?.mode === 'online') {
       // @ts-ignore
       const username: string = credentials.state()['username']
+      // @ts-ignore
+      const encryptionKey: string = credentials.state()['encryptionKey']
       const retrieveAPI = async () => {
         const data = await API.retrieve_qrcode({
           id: username
         })
-        scannerQRCode.set(data.qrcode)
+        scannerQRCode.set(decrypt(data.qrcode, encryptionKey))
         Nav.url(path.scanner.receive_qr)
       }
 

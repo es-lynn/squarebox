@@ -1,5 +1,6 @@
 import httyp from 'httyp'
 import { Cfg } from '../app/config/Config'
+import CryptoJS from 'crypto-js'
 
 type APIRetrieveQRCodeReq = { id: string }
 type APIRetrieveQRCodeRes = { id: string; qrcode: string }
@@ -38,3 +39,4 @@ async function send_payload(data: APISendPayloadReq) {
 }
 
 export const API = { send_qrcode, retrieve_qrcode, send_payload, retrieve_payload }
+

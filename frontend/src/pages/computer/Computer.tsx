@@ -11,6 +11,7 @@ import { receivingStore } from './receiving/ReceivingStore'
 import { Nav } from '../../app/Navigator'
 import { path } from '../../routes/path'
 import { useLinkedState } from '../../lib/LinkedState'
+import { decrypt } from "../../services/EncryptionService";
 
 const AfterLoginImage = styledHtml.img`
   width: 331px;
@@ -35,11 +36,13 @@ export const Computer = () => {
     if (credentials.state()?.mode === 'online') {
       // @ts-ignore
       const username: string = credentials.state()['username']
+      // @ts-ignore
+      const encryptionKey: string = credentials.state()['encryptionKey']
       const retrieveAPI = async () => {
         const data = await API.retrieve_payload({
           id: username
         })
-        receivingStore.set(data.payload)
+        receivingStore.set(decrypt(data.payload, encryptionKey))
         Nav.url(path.receiving.output)
       }
 
