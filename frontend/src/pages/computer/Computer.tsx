@@ -10,6 +10,7 @@ import { API } from '../../services/API'
 import { receivingStore } from './receiving/ReceivingStore'
 import { Nav } from '../../app/Navigator'
 import { path } from '../../routes/path'
+import { useLinkedState } from '../../lib/LinkedState'
 
 const AfterLoginImage = styledHtml.img`
   width: 331px;
@@ -47,16 +48,25 @@ export const Computer = () => {
     }
   }, [])
 
+  const [_credentials] = useLinkedState(credentials)
+  const name: string | undefined = (() => {
+    if (_credentials?.mode === 'online') {
+      return _credentials.username
+    }
+  })()
   return (
     <PageView>
-      <HeaderText>Hello ! 👋</HeaderText>
-      <HeaderText>Welcome back!</HeaderText>
+      {name ? (
+        <HeaderText>{`Hello ${name}!\nWelcome back!`}</HeaderText>
+      ) : (
+        <HeaderText>{'Hello Anonymous!\nWelcome back!'}</HeaderText>
+      )}
       <SVGHomePage />
       <ParaTopText>Please choose an option</ParaTopText>
       <ParaBottomText> you’d like to do today!</ParaBottomText>
       <TwoButtonGrid>
-        <PrimaryButton onPress={onSelectSend}>Generate QR code</PrimaryButton>
-        <PrimaryButton onPress={onSelectReceive}>Scan QR code</PrimaryButton>
+        <PrimaryButton onPress={onSelectSend}>Send Text</PrimaryButton>
+        <PrimaryButton onPress={onSelectReceive}>Receive Text</PrimaryButton>
         <LinkButton onClick={logout}>Logout</LinkButton>
       </TwoButtonGrid>
     </PageView>

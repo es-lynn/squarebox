@@ -46,7 +46,7 @@ export const Login = () => {
   return (
     <PageView>
       <HeaderText>Hello there!</HeaderText>
-      <HeaderText>Just one time sign in is enough! 😎</HeaderText>
+      <HeaderText>All you need to do is sign in once! 😎</HeaderText>
       {/*<FrontPageImg src={LogInImg} alt="LogInImg" />*/}
       <SVGLoginScreen />
       <ParaText>Please fill in the fields below to sign in</ParaText>
@@ -72,7 +72,7 @@ export const Login = () => {
           onPress={() => {
             configureCredentials({
               mode: 'online',
-              username: email,
+              username: email.toLowerCase(),
               encryptionKey: password
             })
           }}
