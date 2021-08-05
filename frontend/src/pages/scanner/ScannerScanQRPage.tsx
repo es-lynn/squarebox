@@ -26,11 +26,11 @@ export const ScannerScanQRPage = () => {
     // @ts-ignore
     const username: string = credentials.state()['username']
     try {
+      Nav.url(path.scanner.success)
       await API.send_payload({
         id: username,
         payload: content
       })
-      Nav.url(path.scanner.success)
     } catch (e) {
       console.error(e)
     }

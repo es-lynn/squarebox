@@ -30,7 +30,7 @@ const TextAreaCustom = styledHtml('textarea')`
   margin-bottom: 30px;
   padding-left: 14px;
   padding-top:14px;
-  width: 100%;
+  width: 85%;
 `
 
 export const ReceivingOutputPage = () => {
