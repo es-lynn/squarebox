@@ -1,12 +1,10 @@
 import React, { useState } from 'react'
 import QrReader from 'react-qr-reader'
 import styled from '@emotion/styled'
-import { onQRCodeScanned } from './ReceivingStore'
+// import { onQRCodeScanned } from './ReceivingStore'
 import { Button, Switch } from 'native-base'
 import { withStyle } from 'reactjs-commons'
 import { View } from 'react-native'
-import { PageView } from '../../../components/business/PageView'
-import { BodyText, HeaderText, TwoButtonGrid, PrimaryButton } from '../../../style/style'
 
 const SetupScannerModeContainer = styled.div`
   display: flex;
@@ -31,7 +29,7 @@ export const ReceivingScannerPage = () => {
   const handleError = (err: Error) => {
     console.log(err)
   }
-  const videoScan = async (hash: string | null) => {
+  const login = async (hash: string | null) => {
     if (hash) {
       const checkStart = hash.split('--||SQUAREBOXSTART||--')
       const checkEnd = hash.split('--||SQUAREBOXEND||--')
@@ -61,12 +59,6 @@ export const ReceivingScannerPage = () => {
     }
   }
 
-  const login = (hash: string| null) => {
-    if (hash){
-      onQRCodeScanned(hash)
-    }
-  }
-
   const onCameraToggle = (checked: boolean) => {
     setCameraMode(checked)
   }
@@ -76,52 +68,31 @@ export const ReceivingScannerPage = () => {
   }
 
   return (
-    <PageView>
+    <ContentWrapper>
       <SetupScannerModeContainer>
-        <HeaderText>Scanning Right Away! 👀</HeaderText>
-        <BodyText>Make sure your mobile is paired with a computer. You can toggle between which camera you like by using the switch below.</BodyText>
-        <ToggleWrapper>
-          <CameraToggle onValueChange={(checked: boolean) => onCameraToggle(checked)} />
-          <BodyText> Toggle camera</BodyText>
-        </ToggleWrapper>
+        <h2>Toggle Camera</h2>
+        <CameraToggle onValueChange={(checked: boolean) => onCameraToggle(checked)} />
         <FlipView flip={flipImage}>
           <QRImageReader
-            delay={500}
+            delay={1000}
             onError={handleError}
             onScan={login}
             facingMode={cameraMode ? 'environment' : 'user'}
           />
         </FlipView>
-        <TempMainWrapper>
-          <TwoButtonGrid>
-            <PrimaryButton onPress={flipCameraImage}>Flip Camera To Mirror Image</PrimaryButton>
-          </TwoButtonGrid>
-        </TempMainWrapper>
-
+        <Button onPress={flipCameraImage}>Mirror Image</Button>
         <br />
+        <div>Text:</div>
+        <div>{scanVal}</div>
       </SetupScannerModeContainer>
-    </PageView>
+    </ContentWrapper>
   )
 }
 
-const TempMainWrapper = styled.div`
-  width: 100%;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  text-align: center;
+const ContentWrapper = styled.div`
   margin-top: 20px;
-  justify-content: center;
-`
-
-const ToggleWrapper = styled.div`
-  width: 100%;
+  width: 90vw;
   display: flex;
-  align-items: center;
-  flex-direction: row;
-  text-align: center;
-  margin-top: 20px;
-  margin-bottom: 10px;
   justify-content: center;
 `
 
