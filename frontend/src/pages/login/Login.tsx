@@ -3,7 +3,7 @@ import { configureCredentials } from './Login.func'
 import { PageView } from '../../components/business/PageView'
 import styled from 'styled-components/native'
 import styledHtml from 'styled-components'
-import LogInImg from '../../images/log_in_screen.svg'
+import { SVGLoginScreen } from '../../images/SVGLoginScreen'
 import {
   BodyText,
   CustomInput,
@@ -13,7 +13,7 @@ import {
   TwoButtonGrid
 } from '../../style/style'
 import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons'
-import LockIcon from '../../images/icons/lock.svg'
+import { SVGLock } from '../../images/icons/SVGLock'
 
 const FrontPageImg = styledHtml.img`
   width: 192px;
@@ -47,13 +47,14 @@ export const Login = () => {
     <PageView>
       <HeaderText>Hello there!</HeaderText>
       <HeaderText>Just one time sign in is enough! 😎</HeaderText>
-      <FrontPageImg src={LogInImg} alt="LogInImg" />
+      {/*<FrontPageImg src={LogInImg} alt="LogInImg" />*/}
+      <SVGLoginScreen />
       <ParaText>Please fill in the fields below to sign in</ParaText>
       <InputContainer>
         {/* <PhoneInput addonBefore="+65" placeholder="Your Phone Number" /> */}
         <CustomInput placeholder="Your Email" onChange={(e: any) => setEmail(e.target.value)} />
         <PassWordInput
-          prefix={<PrefixIcon src={LockIcon} alt="lock-icon" />}
+          prefix={<SVGLock />}
           onChange={e => setPassword(e.target.value)}
           iconRender={visible => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
         />

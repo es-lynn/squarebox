@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { PageView } from '../../components/business/PageView'
 import { BodyText, HeaderText, PrimaryButton, TwoButtonGrid } from '../../style/style'
-import ScannerSuccess from '../../images/scanner_success.svg'
+import { SVGScannerSuccess } from '../../images/SVGScannerSuccess'
 import { Nav } from '../../app/Navigator'
 import { path } from '../../routes/path'
 import styledHtml from 'styled-components'
@@ -35,7 +35,7 @@ export const ScannerScanConfirmationPage = () => {
           'No data left behind!\nAs you have paired your computer, the data has been successfully transferred on it right now!'
         }
       </BodyText>
-      <AfterLoginImage src={ScannerSuccess} alt="HomeImg" />
+      <SVGScannerSuccess />
       <TwoButtonGrid style={{ marginTop: 32 }}>
         <PrimaryButton
           onPress={() => {
