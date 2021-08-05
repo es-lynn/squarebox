@@ -1,5 +1,5 @@
-import { Button, Text } from 'native-base'
-import { Input as AntInput } from 'antd'
+import { Button, Text, Link } from 'native-base'
+import { Input as AntInput, Button as AntButton } from 'antd'
 import styled from 'styled-components/native'
 import styledHtml from 'styled-components'
 import 'antd/dist/antd.css'
@@ -30,10 +30,59 @@ export const PrimaryButton = styled(Button)`
   font-weight: bold;
 `
 
+export const LinkButton = styledHtml.a`
+  text-decoration-line: underline;
+  color: #6842ff;
+  text-align: center;
+  font-size: 16px;
+
+    :hover {
+   color: #6842ff;
+     text-decoration-line: underline;
+  }
+`
+
+export const SecondaryButton = styledHtml(AntButton)`
+  border: 2px solid #6842ff;
+  width: 277px;
+  height: 52px;
+  font-size: 16px;
+  border-radius: 100px;
+  font-weight: bold;
+  background-color: #fff;
+  color: #6842ff !important;
+
+  :hover {
+     border: 2px solid #6842ff;
+       background-color: #fff;
+  }
+`
+
+export const PrimaryAntButton = styledHtml(AntButton)`
+  background-color: #6842ff;
+  width: 277px;
+  height: 52px;
+  font-size: 16px;
+  border-radius: 100px;
+  font-weight: bold;
+  color: #fff;
+
+    :hover {
+       color: #fff;
+       background-color: #6842ff;
+  }
+`
+
 export const TwoButtonGrid = styledHtml.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
+  .ant-btn:not([disabled]):active {
+    border: 2px solid #6842ff;
+    color: #6842ff;
+}
+
+
 `
 
 export const HeaderText = styled(Text)`
