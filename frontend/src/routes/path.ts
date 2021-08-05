@@ -19,6 +19,7 @@ export const path = {
   scanner: {
     index: '/scanner',
     scan_qr: '/scanner/scan-qr',
+    success: '/scanner/success',
     receive_qr: '/scanner/receive-qr',
     pair: '/scanner/pair'
   },
