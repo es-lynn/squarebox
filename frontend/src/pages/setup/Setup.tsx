@@ -1,5 +1,4 @@
 import { PageView } from '../../components/business/PageView'
-import { Button, Text } from 'native-base'
 import React from 'react'
 import { configureDevice } from './Setup.func'
 import styled from 'styled-components/native'

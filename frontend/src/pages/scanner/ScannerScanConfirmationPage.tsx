@@ -1,7 +1,7 @@
-import React from 'react'
 import { QRCodeScanner } from '../../components/QRCodeScanner'
 import { credentials } from '../State'
 import { API } from '../../services/API'
+import React from 'react'
 
 export const ScannerScanQRPage = () => {
   return (

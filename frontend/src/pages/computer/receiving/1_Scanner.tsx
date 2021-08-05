@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import QrReader from 'react-qr-reader'
 import styled from '@emotion/styled'
 import { onQRCodeScanned } from './ReceivingStore'
-import { Button, Switch } from 'native-base'
+import { Switch } from 'native-base'
 import { withStyle } from 'reactjs-commons'
 import { View } from 'react-native'
 import { PageView } from '../../../components/business/PageView'
@@ -61,8 +61,8 @@ export const ReceivingScannerPage = () => {
     }
   }
 
-  const login = (hash: string| null) => {
-    if (hash){
+  const login = (hash: string | null) => {
+    if (hash) {
       onQRCodeScanned(hash)
     }
   }
@@ -79,7 +79,10 @@ export const ReceivingScannerPage = () => {
     <PageView>
       <SetupScannerModeContainer>
         <HeaderText>Scanning Right Away! 👀</HeaderText>
-        <BodyText>Make sure your mobile is paired with a computer. You can toggle between which camera you like by using the switch below.</BodyText>
+        <BodyText>
+          Make sure your mobile is paired with a computer. You can toggle between which camera you
+          like by using the switch below.
+        </BodyText>
         <ToggleWrapper>
           <CameraToggle onValueChange={(checked: boolean) => onCameraToggle(checked)} />
           <BodyText> Toggle camera</BodyText>
