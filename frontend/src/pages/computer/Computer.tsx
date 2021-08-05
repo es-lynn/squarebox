@@ -28,7 +28,7 @@ const ParaBottomText = styled(BodyText)`
 export const Computer = () => {
   return (
     <PageView>
-      <HeaderText>Hello Dave! 👋</HeaderText>
+      <HeaderText>Hello ! 👋</HeaderText>
       <HeaderText>Welcome back!</HeaderText>
       <AfterLoginImage src={HomeImg} alt="HomeImg" />
       <ParaTopText>Please choose an option</ParaTopText>
