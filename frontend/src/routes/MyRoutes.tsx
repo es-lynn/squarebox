@@ -16,6 +16,7 @@ import { Home } from '../pages/home/Home'
 import { Login } from '../pages/login/Login'
 import { Setup } from '../pages/setup/Setup'
 import { Computer } from '../pages/computer/Computer'
+import { SyncTextPage } from '../pages/computer/sync-qr/SyncQR'
 
 const MyRoutes = () => {
   const navigate = useNavigate()
@@ -30,6 +31,7 @@ const MyRoutes = () => {
       <Route path={path.login.index} element={<Login />} />
       <Route path={path.setup.index} element={<Setup />} />
       <Route path={path.computer.index} element={<Computer />} />
+      <Route path={path.computer.sync_qr} element={<SyncTextPage />} />
 
       <Route path={path.sending.input} element={<SendingInputPage />} />
       <Route path={path.sending.display} element={<SendingDisplayPage />} />
