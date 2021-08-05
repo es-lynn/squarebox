@@ -204,7 +204,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/squarebox-backend/develop/1628149628380-2021-08-05T07:47:08.380Z/squarebox-backend.zip"
+          "S3Key": "serverless/squarebox-backend/develop/1628197337095-2021-08-05T21:02:17.095Z/squarebox-backend.zip"
         },
         "Handler": "dist/handler.retrieve_payload",
         "Runtime": "nodejs12.x",
@@ -240,7 +240,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/squarebox-backend/develop/1628149628380-2021-08-05T07:47:08.380Z/squarebox-backend.zip"
+          "S3Key": "serverless/squarebox-backend/develop/1628197337095-2021-08-05T21:02:17.095Z/squarebox-backend.zip"
         },
         "Handler": "dist/handler.send_payload",
         "Runtime": "nodejs12.x",
@@ -276,7 +276,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/squarebox-backend/develop/1628149628380-2021-08-05T07:47:08.380Z/squarebox-backend.zip"
+          "S3Key": "serverless/squarebox-backend/develop/1628197337095-2021-08-05T21:02:17.095Z/squarebox-backend.zip"
         },
         "Handler": "dist/handler.retrieve_qrcode",
         "Runtime": "nodejs12.x",
@@ -312,7 +312,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/squarebox-backend/develop/1628149628380-2021-08-05T07:47:08.380Z/squarebox-backend.zip"
+          "S3Key": "serverless/squarebox-backend/develop/1628197337095-2021-08-05T21:02:17.095Z/squarebox-backend.zip"
         },
         "Handler": "dist/handler.send_qrcode",
         "Runtime": "nodejs12.x",
@@ -341,44 +341,44 @@
         "SendUnderscoreqrcodeLogGroup"
       ]
     },
-    "RetrieveUnderscorepayloadLambdaVersion23praP9cBjLhnpngEiiJ1dp4qqjH5hTx4I0CY3sczJ4": {
+    "RetrieveUnderscorepayloadLambdaVersionUAcxn1abgdip14Sdu3oa0622RYWpCSCAxhrF3HFAaB0": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "RetrieveUnderscorepayloadLambdaFunction"
         },
-        "CodeSha256": "UnwNMgrODppqo5vACGW2QJhDL1tqphSwOD4AYtnB4ZU="
+        "CodeSha256": "zQP89WaARcegrQVl2cw8IjKMYKmjxOCHwFRhMv03MaE="
       }
     },
-    "SendUnderscorepayloadLambdaVersionQwmaJf0nNRyMWp0sEAbytx3Gagy8E399jUqFxQsjTCI": {
+    "SendUnderscorepayloadLambdaVersionnG8SOoZbjE7OG1Qn9uxqE311TrZTkalPWtJjZpWGFA": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "SendUnderscorepayloadLambdaFunction"
         },
-        "CodeSha256": "UnwNMgrODppqo5vACGW2QJhDL1tqphSwOD4AYtnB4ZU="
+        "CodeSha256": "zQP89WaARcegrQVl2cw8IjKMYKmjxOCHwFRhMv03MaE="
       }
     },
-    "RetrieveUnderscoreqrcodeLambdaVersionc3tX4954LIqES4v8L6eamz86dJyYYbex5EwqeVWcA": {
+    "RetrieveUnderscoreqrcodeLambdaVersionOjoFrScHqdPX50J7umhhHdje9XqFtoGb5RL8usruQ": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "RetrieveUnderscoreqrcodeLambdaFunction"
         },
-        "CodeSha256": "UnwNMgrODppqo5vACGW2QJhDL1tqphSwOD4AYtnB4ZU="
+        "CodeSha256": "zQP89WaARcegrQVl2cw8IjKMYKmjxOCHwFRhMv03MaE="
       }
     },
-    "SendUnderscoreqrcodeLambdaVersiongwVhKuaNCfLYVZNzsEOzwVpczX9t0RZlMMmNJhGS74": {
+    "SendUnderscoreqrcodeLambdaVersionxvrrK7tgcVJLEvZFgfX4NGVmQtqVyI9rLX52ase9EY": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "SendUnderscoreqrcodeLambdaFunction"
         },
-        "CodeSha256": "UnwNMgrODppqo5vACGW2QJhDL1tqphSwOD4AYtnB4ZU="
+        "CodeSha256": "zQP89WaARcegrQVl2cw8IjKMYKmjxOCHwFRhMv03MaE="
       }
     },
     "ApiGatewayRestApi": {
@@ -817,7 +817,7 @@
         "SendUnderscoreqrcodeLambdaPermissionApiGateway"
       ]
     },
-    "ApiGatewayDeployment1628149618610": {
+    "ApiGatewayDeployment1628197333935": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -1037,7 +1037,7 @@
     "RetrieveUnderscorepayloadLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "RetrieveUnderscorepayloadLambdaVersion23praP9cBjLhnpngEiiJ1dp4qqjH5hTx4I0CY3sczJ4"
+        "Ref": "RetrieveUnderscorepayloadLambdaVersionUAcxn1abgdip14Sdu3oa0622RYWpCSCAxhrF3HFAaB0"
       },
       "Export": {
         "Name": "sls-squarebox-backend-develop-RetrieveUnderscorepayloadLambdaFunctionQualifiedArn"
@@ -1046,7 +1046,7 @@
     "SendUnderscorepayloadLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "SendUnderscorepayloadLambdaVersionQwmaJf0nNRyMWp0sEAbytx3Gagy8E399jUqFxQsjTCI"
+        "Ref": "SendUnderscorepayloadLambdaVersionnG8SOoZbjE7OG1Qn9uxqE311TrZTkalPWtJjZpWGFA"
       },
       "Export": {
         "Name": "sls-squarebox-backend-develop-SendUnderscorepayloadLambdaFunctionQualifiedArn"
@@ -1055,7 +1055,7 @@
     "RetrieveUnderscoreqrcodeLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "RetrieveUnderscoreqrcodeLambdaVersionc3tX4954LIqES4v8L6eamz86dJyYYbex5EwqeVWcA"
+        "Ref": "RetrieveUnderscoreqrcodeLambdaVersionOjoFrScHqdPX50J7umhhHdje9XqFtoGb5RL8usruQ"
       },
       "Export": {
         "Name": "sls-squarebox-backend-develop-RetrieveUnderscoreqrcodeLambdaFunctionQualifiedArn"
@@ -1064,7 +1064,7 @@
     "SendUnderscoreqrcodeLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "SendUnderscoreqrcodeLambdaVersiongwVhKuaNCfLYVZNzsEOzwVpczX9t0RZlMMmNJhGS74"
+        "Ref": "SendUnderscoreqrcodeLambdaVersionxvrrK7tgcVJLEvZFgfX4NGVmQtqVyI9rLX52ase9EY"
       },
       "Export": {
         "Name": "sls-squarebox-backend-develop-SendUnderscoreqrcodeLambdaFunctionQualifiedArn"
