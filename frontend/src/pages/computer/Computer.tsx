@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { PageView } from '../../components/business/PageView'
 import { Button, Text } from 'native-base'
 import { logout, onSelectReceive, onSelectSend, onSelectSyncText } from './Computer.func'
