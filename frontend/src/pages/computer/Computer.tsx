@@ -8,6 +8,9 @@ import styledHtml from 'styled-components'
 import HomeImg from '../../images/home_page.svg'
 import { credentials } from '../State'
 import { API } from '../../services/API'
+import { receivingStore } from './receiving/ReceivingStore'
+import { Nav } from '../../app/Navigator'
+import { path } from '../../routes/path'
 
 const AfterLoginImage = styledHtml.img`
   width: 331px;
@@ -36,7 +39,8 @@ export const Computer = () => {
         const data = await API.retrieve_payload({
           id: username
         })
-        alert(JSON.stringify(data)) // TODO: Change
+        receivingStore.set(data.payload)
+        Nav.url(path.receiving.output)
       }
 
       const intervalID = setInterval(retrieveAPI, 3000)
@@ -54,7 +58,6 @@ export const Computer = () => {
       <TwoButtonGrid>
         <PrimaryButton onPress={onSelectSend}>Generate QR code</PrimaryButton>
         <PrimaryButton onPress={onSelectReceive}>Scan QR code</PrimaryButton>
-        <PrimaryButton onPress={onSelectSyncText}>Receive Text</PrimaryButton>
         <LinkButton onClick={logout}>Logout</LinkButton>
       </TwoButtonGrid>
     </PageView>

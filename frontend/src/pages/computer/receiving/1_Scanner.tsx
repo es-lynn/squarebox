@@ -23,43 +23,43 @@ const CameraToggle = withStyle(Switch)({
 export const ReceivingScannerPage = () => {
   const [cameraMode, setCameraMode] = useState(true)
   const [flipImage, setFlipImage] = useState(true)
-  const [toScan, setToScan] = React.useState(false)
+  // const [toScan, setToScan] = React.useState(false)
 
-  const [scanVal, setScanVal] = React.useState('')
-  const [scanLength, setScanLength] = React.useState('')
-  const [numScanned, setNumScanned] = React.useState(0)
+  // const [scanVal, setScanVal] = React.useState('')
+  // const [scanLength, setScanLength] = React.useState('')
+  // const [numScanned, setNumScanned] = React.useState(0)
   const handleError = (err: Error) => {
-    console.log(err)
+    console.error(err)
   }
-  const videoScan = async (hash: string | null) => {
-    if (hash) {
-      const checkStart = hash.split('--||SQUAREBOXSTART||--')
-      const checkEnd = hash.split('--||SQUAREBOXEND||--')
-      if (checkStart.length === 2) {
-        if (!toScan) {
-          setToScan(true)
-          setScanLength(checkStart[0])
-        }
-      } else if (checkEnd.length === 2) {
-        if (toScan) {
-          if (numScanned.toString() != scanLength) {
-            alert('did not scan all. Scanned: ' + numScanned)
-            setScanVal('')
-            setNumScanned(0)
-          } else {
-            alert('scan done')
-            setToScan(false)
-          }
-        }
-      } else if (toScan) {
-        let init = scanVal
-        const initCount = numScanned + 1
-        init = init + hash
-        setScanVal(init)
-        setNumScanned(initCount)
-      }
-    }
-  }
+  // const videoScan = async (hash: string | null) => {
+  //   if (hash) {
+  //     const checkStart = hash.split('--||SQUAREBOXSTART||--')
+  //     const checkEnd = hash.split('--||SQUAREBOXEND||--')
+  //     if (checkStart.length === 2) {
+  //       if (!toScan) {
+  //         setToScan(true)
+  //         setScanLength(checkStart[0])
+  //       }
+  //     } else if (checkEnd.length === 2) {
+  //       if (toScan) {
+  //         if (numScanned.toString() != scanLength) {
+  //           alert('did not scan all. Scanned: ' + numScanned)
+  //           setScanVal('')
+  //           setNumScanned(0)
+  //         } else {
+  //           alert('scan done')
+  //           setToScan(false)
+  //         }
+  //       }
+  //     } else if (toScan) {
+  //       let init = scanVal
+  //       const initCount = numScanned + 1
+  //       init = init + hash
+  //       setScanVal(init)
+  //       setNumScanned(initCount)
+  //     }
+  //   }
+  // }
 
   const login = (hash: string | null) => {
     if (hash) {
