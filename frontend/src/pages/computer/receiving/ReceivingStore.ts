@@ -3,6 +3,7 @@ import { Nav } from '../../../app/Navigator'
 import { path } from '../../../routes/path'
 
 export const receivingStore = new LinkedState<string>('')
+export const generatingStore = new LinkedState<string>('')
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const onQRCodeScanned = (content: string) => {
@@ -15,4 +16,9 @@ export const copyFromInputRef = (ref: any) => {
   ref.current?.focus()
   ref.current?.select()
   document.execCommand('copy')
+}
+
+export const onGenerateQR = (content: string) => {
+  generatingStore.set(content)
+  Nav.url(path.sending.display)
 }

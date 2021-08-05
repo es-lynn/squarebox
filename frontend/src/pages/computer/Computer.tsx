@@ -1,7 +1,7 @@
 import React from 'react'
 import { PageView } from '../../components/business/PageView'
 import { Button, Text } from 'native-base'
-import { BodyText, HeaderText, PrimaryButton, TwoButtonGrid } from '../../style/style'
+import { BodyText, HeaderText, LinkButton, PrimaryButton, TwoButtonGrid } from '../../style/style'
 import { logout, onSelectReceive, onSelectSend, onSelectSyncText } from './Computer.func'
 import styled from 'styled-components/native'
 import styledHtml from 'styled-components'
@@ -37,7 +37,7 @@ export const Computer = () => {
         <PrimaryButton onPress={onSelectSend}>Generate QR code</PrimaryButton>
         <PrimaryButton onPress={onSelectReceive}>Scan QR code</PrimaryButton>
         <PrimaryButton onPress={onSelectSyncText}>Receive Text</PrimaryButton>
-        <PrimaryButton onPress={logout}>Logout</PrimaryButton>
+        <LinkButton onClick={logout}>Logout</LinkButton>
       </TwoButtonGrid>
     </PageView>
   )
