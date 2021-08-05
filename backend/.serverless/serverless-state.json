@@ -20,33 +20,37 @@
         "CORS_WHITELIST": "[\"*\"]"
       },
       "lambdaHashingVersion": "20201221",
-      "iamRoleStatements": [
-        {
-          "Effect": "Allow",
-          "Action": [
-            "dynamodb:Query",
-            "dynamodb:Scan",
-            "dynamodb:GetItem",
-            "dynamodb:PutItem",
-            "dynamodb:UpdateItem",
-            "dynamodb:DeleteItem"
-          ],
-          "Resource": [
+      "iam": {
+        "role": {
+          "statements": [
             {
-              "Fn::GetAtt": [
-                "payloaddata",
-                "Arn"
-              ]
-            },
-            {
-              "Fn::GetAtt": [
-                "qrcodedata",
-                "Arn"
+              "Effect": "Allow",
+              "Action": [
+                "dynamodb:Query",
+                "dynamodb:Scan",
+                "dynamodb:GetItem",
+                "dynamodb:PutItem",
+                "dynamodb:UpdateItem",
+                "dynamodb:DeleteItem"
+              ],
+              "Resource": [
+                {
+                  "Fn::GetAtt": [
+                    "payloaddata",
+                    "Arn"
+                  ]
+                },
+                {
+                  "Fn::GetAtt": [
+                    "qrcodedata",
+                    "Arn"
+                  ]
+                }
               ]
             }
           ]
         }
-      ],
+      },
       "versionFunctions": true,
       "compiledCloudFormationTemplate": {
         "AWSTemplateFormatVersion": "2010-09-09",
@@ -121,16 +125,28 @@
               }
             }
           },
-          "RetrieveUnderscoredataLogGroup": {
+          "RetrieveUnderscorepayloadLogGroup": {
             "Type": "AWS::Logs::LogGroup",
             "Properties": {
-              "LogGroupName": "/aws/lambda/squarebox-backend-develop-retrieve_data"
+              "LogGroupName": "/aws/lambda/squarebox-backend-develop-retrieve_payload"
             }
           },
-          "SendUnderscoredataLogGroup": {
+          "SendUnderscorepayloadLogGroup": {
             "Type": "AWS::Logs::LogGroup",
             "Properties": {
-              "LogGroupName": "/aws/lambda/squarebox-backend-develop-send_data"
+              "LogGroupName": "/aws/lambda/squarebox-backend-develop-send_payload"
+            }
+          },
+          "RetrieveUnderscoreqrcodeLogGroup": {
+            "Type": "AWS::Logs::LogGroup",
+            "Properties": {
+              "LogGroupName": "/aws/lambda/squarebox-backend-develop-retrieve_qrcode"
+            }
+          },
+          "SendUnderscoreqrcodeLogGroup": {
+            "Type": "AWS::Logs::LogGroup",
+            "Properties": {
+              "LogGroupName": "/aws/lambda/squarebox-backend-develop-send_qrcode"
             }
           },
           "IamRoleLambdaExecution": {
@@ -191,7 +207,7 @@
                         ]
                       },
                       {
-                        "$ref": "$[\"service\"][\"provider\"][\"iamRoleStatements\"][0]"
+                        "$ref": "$[\"service\"][\"provider\"][\"iam\"][\"role\"][\"statements\"][0]"
                       }
                     ]
                   }
@@ -213,18 +229,18 @@
               }
             }
           },
-          "RetrieveUnderscoredataLambdaFunction": {
+          "RetrieveUnderscorepayloadLambdaFunction": {
             "Type": "AWS::Lambda::Function",
             "Properties": {
               "Code": {
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/squarebox-backend/develop/1628141363325-2021-08-05T05:29:23.325Z/squarebox-backend.zip"
+                "S3Key": "serverless/squarebox-backend/develop/1628142727493-2021-08-05T05:52:07.493Z/squarebox-backend.zip"
               },
-              "Handler": "dist/handler.retrieve_data",
+              "Handler": "dist/handler.retrieve_payload",
               "Runtime": "nodejs12.x",
-              "FunctionName": "squarebox-backend-develop-retrieve_data",
+              "FunctionName": "squarebox-backend-develop-retrieve_payload",
               "MemorySize": 1024,
               "Timeout": 15,
               "Environment": {
@@ -246,21 +262,21 @@
               }
             },
             "DependsOn": [
-              "RetrieveUnderscoredataLogGroup"
+              "RetrieveUnderscorepayloadLogGroup"
             ]
           },
-          "SendUnderscoredataLambdaFunction": {
+          "SendUnderscorepayloadLambdaFunction": {
             "Type": "AWS::Lambda::Function",
             "Properties": {
               "Code": {
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/squarebox-backend/develop/1628141363325-2021-08-05T05:29:23.325Z/squarebox-backend.zip"
+                "S3Key": "serverless/squarebox-backend/develop/1628142727493-2021-08-05T05:52:07.493Z/squarebox-backend.zip"
               },
-              "Handler": "dist/handler.send_data",
+              "Handler": "dist/handler.send_payload",
               "Runtime": "nodejs12.x",
-              "FunctionName": "squarebox-backend-develop-send_data",
+              "FunctionName": "squarebox-backend-develop-send_payload",
               "MemorySize": 1024,
               "Timeout": 15,
               "Environment": {
@@ -282,27 +298,119 @@
               }
             },
             "DependsOn": [
-              "SendUnderscoredataLogGroup"
+              "SendUnderscorepayloadLogGroup"
             ]
           },
-          "RetrieveUnderscoredataLambdaVersionRoW1QVej1vK2QSDVcxk6HX3N93A09a95bps5hw9uBA": {
+          "RetrieveUnderscoreqrcodeLambdaFunction": {
+            "Type": "AWS::Lambda::Function",
+            "Properties": {
+              "Code": {
+                "S3Bucket": {
+                  "Ref": "ServerlessDeploymentBucket"
+                },
+                "S3Key": "serverless/squarebox-backend/develop/1628142727493-2021-08-05T05:52:07.493Z/squarebox-backend.zip"
+              },
+              "Handler": "dist/handler.retrieve_qrcode",
+              "Runtime": "nodejs12.x",
+              "FunctionName": "squarebox-backend-develop-retrieve_qrcode",
+              "MemorySize": 1024,
+              "Timeout": 15,
+              "Environment": {
+                "Variables": {
+                  "SERVICE": "squarebox-backend",
+                  "ENVIRONMENT": "develop",
+                  "AWSC_REGION": "ap-southeast-1",
+                  "DB_DEL_POLICY": "Delete",
+                  "DB_PAYLOAD_DATA": "payloaddata",
+                  "DB_QRCODE_DATA": "qrcodedata",
+                  "CORS_WHITELIST": "[\"*\"]"
+                }
+              },
+              "Role": {
+                "Fn::GetAtt": [
+                  "IamRoleLambdaExecution",
+                  "Arn"
+                ]
+              }
+            },
+            "DependsOn": [
+              "RetrieveUnderscoreqrcodeLogGroup"
+            ]
+          },
+          "SendUnderscoreqrcodeLambdaFunction": {
+            "Type": "AWS::Lambda::Function",
+            "Properties": {
+              "Code": {
+                "S3Bucket": {
+                  "Ref": "ServerlessDeploymentBucket"
+                },
+                "S3Key": "serverless/squarebox-backend/develop/1628142727493-2021-08-05T05:52:07.493Z/squarebox-backend.zip"
+              },
+              "Handler": "dist/handler.send_qrcode",
+              "Runtime": "nodejs12.x",
+              "FunctionName": "squarebox-backend-develop-send_qrcode",
+              "MemorySize": 1024,
+              "Timeout": 15,
+              "Environment": {
+                "Variables": {
+                  "SERVICE": "squarebox-backend",
+                  "ENVIRONMENT": "develop",
+                  "AWSC_REGION": "ap-southeast-1",
+                  "DB_DEL_POLICY": "Delete",
+                  "DB_PAYLOAD_DATA": "payloaddata",
+                  "DB_QRCODE_DATA": "qrcodedata",
+                  "CORS_WHITELIST": "[\"*\"]"
+                }
+              },
+              "Role": {
+                "Fn::GetAtt": [
+                  "IamRoleLambdaExecution",
+                  "Arn"
+                ]
+              }
+            },
+            "DependsOn": [
+              "SendUnderscoreqrcodeLogGroup"
+            ]
+          },
+          "RetrieveUnderscorepayloadLambdaVersiontKo6n5kqkPslcS8TPmi4uLTTXwoD0TmzwpdSMQIiHzM": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
-                "Ref": "RetrieveUnderscoredataLambdaFunction"
+                "Ref": "RetrieveUnderscorepayloadLambdaFunction"
               },
-              "CodeSha256": "y7Qe5KLLcHfCpSEfMIyEYTZqcJiu5JAUQ9CIV1g8ifI="
+              "CodeSha256": "jBraiViGaPmky4Nl27Fxs6ZolZjrPq4EQIMxMa0IxPs="
             }
           },
-          "SendUnderscoredataLambdaVersionWud8n5kn5yrLMuaZ4YvV0P2nyyEHohDGhdyoUOSk": {
+          "SendUnderscorepayloadLambdaVersionTx223ZS4KwO1iM3WH522REwLehXfSfRoVONt4OvMU": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
-                "Ref": "SendUnderscoredataLambdaFunction"
+                "Ref": "SendUnderscorepayloadLambdaFunction"
               },
-              "CodeSha256": "y7Qe5KLLcHfCpSEfMIyEYTZqcJiu5JAUQ9CIV1g8ifI="
+              "CodeSha256": "jBraiViGaPmky4Nl27Fxs6ZolZjrPq4EQIMxMa0IxPs="
+            }
+          },
+          "RetrieveUnderscoreqrcodeLambdaVersionHfIMDVXQ0my5gd2Zc7JrtZMnNtUIpsifbTbfGfr0zE": {
+            "Type": "AWS::Lambda::Version",
+            "DeletionPolicy": "Retain",
+            "Properties": {
+              "FunctionName": {
+                "Ref": "RetrieveUnderscoreqrcodeLambdaFunction"
+              },
+              "CodeSha256": "jBraiViGaPmky4Nl27Fxs6ZolZjrPq4EQIMxMa0IxPs="
+            }
+          },
+          "SendUnderscoreqrcodeLambdaVersionQ4Iv9uJf6NodFvrmLUZgU3ZrkpuCLUrDy17XTXX4s": {
+            "Type": "AWS::Lambda::Version",
+            "DeletionPolicy": "Retain",
+            "Properties": {
+              "FunctionName": {
+                "Ref": "SendUnderscoreqrcodeLambdaFunction"
+              },
+              "CodeSha256": "jBraiViGaPmky4Nl27Fxs6ZolZjrPq4EQIMxMa0IxPs="
             }
           },
           "ApiGatewayRestApi": {
@@ -317,7 +425,7 @@
               "Policy": ""
             }
           },
-          "ApiGatewayResourceRetrieveDashdata": {
+          "ApiGatewayResourceRetrieveDashpayload": {
             "Type": "AWS::ApiGateway::Resource",
             "Properties": {
               "ParentId": {
@@ -326,13 +434,13 @@
                   "RootResourceId"
                 ]
               },
-              "PathPart": "retrieve-data",
+              "PathPart": "retrieve-payload",
               "RestApiId": {
                 "Ref": "ApiGatewayRestApi"
               }
             }
           },
-          "ApiGatewayResourceSendDashdata": {
+          "ApiGatewayResourceSendDashpayload": {
             "Type": "AWS::ApiGateway::Resource",
             "Properties": {
               "ParentId": {
@@ -341,19 +449,49 @@
                   "RootResourceId"
                 ]
               },
-              "PathPart": "send-data",
+              "PathPart": "send-payload",
               "RestApiId": {
                 "Ref": "ApiGatewayRestApi"
               }
             }
           },
-          "ApiGatewayMethodRetrieveDashdataGet": {
+          "ApiGatewayResourceRetrieveDashqrcode": {
+            "Type": "AWS::ApiGateway::Resource",
+            "Properties": {
+              "ParentId": {
+                "Fn::GetAtt": [
+                  "ApiGatewayRestApi",
+                  "RootResourceId"
+                ]
+              },
+              "PathPart": "retrieve-qrcode",
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              }
+            }
+          },
+          "ApiGatewayResourceSendDashqrcode": {
+            "Type": "AWS::ApiGateway::Resource",
+            "Properties": {
+              "ParentId": {
+                "Fn::GetAtt": [
+                  "ApiGatewayRestApi",
+                  "RootResourceId"
+                ]
+              },
+              "PathPart": "send-qrcode",
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              }
+            }
+          },
+          "ApiGatewayMethodRetrieveDashpayloadGet": {
             "Type": "AWS::ApiGateway::Method",
             "Properties": {
               "HttpMethod": "GET",
               "RequestParameters": {},
               "ResourceId": {
-                "Ref": "ApiGatewayResourceRetrieveDashdata"
+                "Ref": "ApiGatewayResourceRetrieveDashpayload"
               },
               "RestApiId": {
                 "Ref": "ApiGatewayRestApi"
@@ -378,7 +516,7 @@
                       ":lambda:path/2015-03-31/functions/",
                       {
                         "Fn::GetAtt": [
-                          "RetrieveUnderscoredataLambdaFunction",
+                          "RetrieveUnderscorepayloadLambdaFunction",
                           "Arn"
                         ]
                       },
@@ -390,16 +528,16 @@
               "MethodResponses": []
             },
             "DependsOn": [
-              "RetrieveUnderscoredataLambdaPermissionApiGateway"
+              "RetrieveUnderscorepayloadLambdaPermissionApiGateway"
             ]
           },
-          "ApiGatewayMethodSendDashdataPost": {
+          "ApiGatewayMethodSendDashpayloadPost": {
             "Type": "AWS::ApiGateway::Method",
             "Properties": {
               "HttpMethod": "POST",
               "RequestParameters": {},
               "ResourceId": {
-                "Ref": "ApiGatewayResourceSendDashdata"
+                "Ref": "ApiGatewayResourceSendDashpayload"
               },
               "RestApiId": {
                 "Ref": "ApiGatewayRestApi"
@@ -424,7 +562,7 @@
                       ":lambda:path/2015-03-31/functions/",
                       {
                         "Fn::GetAtt": [
-                          "SendUnderscoredataLambdaFunction",
+                          "SendUnderscorepayloadLambdaFunction",
                           "Arn"
                         ]
                       },
@@ -436,10 +574,102 @@
               "MethodResponses": []
             },
             "DependsOn": [
-              "SendUnderscoredataLambdaPermissionApiGateway"
+              "SendUnderscorepayloadLambdaPermissionApiGateway"
             ]
           },
-          "ApiGatewayDeployment1628141360087": {
+          "ApiGatewayMethodRetrieveDashqrcodeGet": {
+            "Type": "AWS::ApiGateway::Method",
+            "Properties": {
+              "HttpMethod": "GET",
+              "RequestParameters": {},
+              "ResourceId": {
+                "Ref": "ApiGatewayResourceRetrieveDashqrcode"
+              },
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              },
+              "ApiKeyRequired": false,
+              "AuthorizationType": "NONE",
+              "Integration": {
+                "IntegrationHttpMethod": "POST",
+                "Type": "AWS_PROXY",
+                "Uri": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition"
+                      },
+                      ":apigateway:",
+                      {
+                        "Ref": "AWS::Region"
+                      },
+                      ":lambda:path/2015-03-31/functions/",
+                      {
+                        "Fn::GetAtt": [
+                          "RetrieveUnderscoreqrcodeLambdaFunction",
+                          "Arn"
+                        ]
+                      },
+                      "/invocations"
+                    ]
+                  ]
+                }
+              },
+              "MethodResponses": []
+            },
+            "DependsOn": [
+              "RetrieveUnderscoreqrcodeLambdaPermissionApiGateway"
+            ]
+          },
+          "ApiGatewayMethodSendDashqrcodePost": {
+            "Type": "AWS::ApiGateway::Method",
+            "Properties": {
+              "HttpMethod": "POST",
+              "RequestParameters": {},
+              "ResourceId": {
+                "Ref": "ApiGatewayResourceSendDashqrcode"
+              },
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              },
+              "ApiKeyRequired": false,
+              "AuthorizationType": "NONE",
+              "Integration": {
+                "IntegrationHttpMethod": "POST",
+                "Type": "AWS_PROXY",
+                "Uri": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition"
+                      },
+                      ":apigateway:",
+                      {
+                        "Ref": "AWS::Region"
+                      },
+                      ":lambda:path/2015-03-31/functions/",
+                      {
+                        "Fn::GetAtt": [
+                          "SendUnderscoreqrcodeLambdaFunction",
+                          "Arn"
+                        ]
+                      },
+                      "/invocations"
+                    ]
+                  ]
+                }
+              },
+              "MethodResponses": []
+            },
+            "DependsOn": [
+              "SendUnderscoreqrcodeLambdaPermissionApiGateway"
+            ]
+          },
+          "ApiGatewayDeployment1628142723195": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -448,16 +678,18 @@
               "StageName": "develop"
             },
             "DependsOn": [
-              "ApiGatewayMethodRetrieveDashdataGet",
-              "ApiGatewayMethodSendDashdataPost"
+              "ApiGatewayMethodRetrieveDashpayloadGet",
+              "ApiGatewayMethodSendDashpayloadPost",
+              "ApiGatewayMethodRetrieveDashqrcodeGet",
+              "ApiGatewayMethodSendDashqrcodePost"
             ]
           },
-          "RetrieveUnderscoredataLambdaPermissionApiGateway": {
+          "RetrieveUnderscorepayloadLambdaPermissionApiGateway": {
             "Type": "AWS::Lambda::Permission",
             "Properties": {
               "FunctionName": {
                 "Fn::GetAtt": [
-                  "RetrieveUnderscoredataLambdaFunction",
+                  "RetrieveUnderscorepayloadLambdaFunction",
                   "Arn"
                 ]
               },
@@ -489,12 +721,86 @@
               }
             }
           },
-          "SendUnderscoredataLambdaPermissionApiGateway": {
+          "SendUnderscorepayloadLambdaPermissionApiGateway": {
             "Type": "AWS::Lambda::Permission",
             "Properties": {
               "FunctionName": {
                 "Fn::GetAtt": [
-                  "SendUnderscoredataLambdaFunction",
+                  "SendUnderscorepayloadLambdaFunction",
+                  "Arn"
+                ]
+              },
+              "Action": "lambda:InvokeFunction",
+              "Principal": "apigateway.amazonaws.com",
+              "SourceArn": {
+                "Fn::Join": [
+                  "",
+                  [
+                    "arn:",
+                    {
+                      "Ref": "AWS::Partition"
+                    },
+                    ":execute-api:",
+                    {
+                      "Ref": "AWS::Region"
+                    },
+                    ":",
+                    {
+                      "Ref": "AWS::AccountId"
+                    },
+                    ":",
+                    {
+                      "Ref": "ApiGatewayRestApi"
+                    },
+                    "/*/*"
+                  ]
+                ]
+              }
+            }
+          },
+          "RetrieveUnderscoreqrcodeLambdaPermissionApiGateway": {
+            "Type": "AWS::Lambda::Permission",
+            "Properties": {
+              "FunctionName": {
+                "Fn::GetAtt": [
+                  "RetrieveUnderscoreqrcodeLambdaFunction",
+                  "Arn"
+                ]
+              },
+              "Action": "lambda:InvokeFunction",
+              "Principal": "apigateway.amazonaws.com",
+              "SourceArn": {
+                "Fn::Join": [
+                  "",
+                  [
+                    "arn:",
+                    {
+                      "Ref": "AWS::Partition"
+                    },
+                    ":execute-api:",
+                    {
+                      "Ref": "AWS::Region"
+                    },
+                    ":",
+                    {
+                      "Ref": "AWS::AccountId"
+                    },
+                    ":",
+                    {
+                      "Ref": "ApiGatewayRestApi"
+                    },
+                    "/*/*"
+                  ]
+                ]
+              }
+            }
+          },
+          "SendUnderscoreqrcodeLambdaPermissionApiGateway": {
+            "Type": "AWS::Lambda::Permission",
+            "Properties": {
+              "FunctionName": {
+                "Fn::GetAtt": [
+                  "SendUnderscoreqrcodeLambdaFunction",
                   "Arn"
                 ]
               },
@@ -576,22 +882,40 @@
               "Name": "sls-squarebox-backend-develop-ServerlessDeploymentBucketName"
             }
           },
-          "RetrieveUnderscoredataLambdaFunctionQualifiedArn": {
+          "RetrieveUnderscorepayloadLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "RetrieveUnderscoredataLambdaVersionRoW1QVej1vK2QSDVcxk6HX3N93A09a95bps5hw9uBA"
+              "Ref": "RetrieveUnderscorepayloadLambdaVersiontKo6n5kqkPslcS8TPmi4uLTTXwoD0TmzwpdSMQIiHzM"
             },
             "Export": {
-              "Name": "sls-squarebox-backend-develop-RetrieveUnderscoredataLambdaFunctionQualifiedArn"
+              "Name": "sls-squarebox-backend-develop-RetrieveUnderscorepayloadLambdaFunctionQualifiedArn"
             }
           },
-          "SendUnderscoredataLambdaFunctionQualifiedArn": {
+          "SendUnderscorepayloadLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "SendUnderscoredataLambdaVersionWud8n5kn5yrLMuaZ4YvV0P2nyyEHohDGhdyoUOSk"
+              "Ref": "SendUnderscorepayloadLambdaVersionTx223ZS4KwO1iM3WH522REwLehXfSfRoVONt4OvMU"
             },
             "Export": {
-              "Name": "sls-squarebox-backend-develop-SendUnderscoredataLambdaFunctionQualifiedArn"
+              "Name": "sls-squarebox-backend-develop-SendUnderscorepayloadLambdaFunctionQualifiedArn"
+            }
+          },
+          "RetrieveUnderscoreqrcodeLambdaFunctionQualifiedArn": {
+            "Description": "Current Lambda function version",
+            "Value": {
+              "Ref": "RetrieveUnderscoreqrcodeLambdaVersionHfIMDVXQ0my5gd2Zc7JrtZMnNtUIpsifbTbfGfr0zE"
+            },
+            "Export": {
+              "Name": "sls-squarebox-backend-develop-RetrieveUnderscoreqrcodeLambdaFunctionQualifiedArn"
+            }
+          },
+          "SendUnderscoreqrcodeLambdaFunctionQualifiedArn": {
+            "Description": "Current Lambda function version",
+            "Value": {
+              "Ref": "SendUnderscoreqrcodeLambdaVersionQ4Iv9uJf6NodFvrmLUZgU3ZrkpuCLUrDy17XTXX4s"
+            },
+            "Export": {
+              "Name": "sls-squarebox-backend-develop-SendUnderscoreqrcodeLambdaFunctionQualifiedArn"
             }
           },
           "ServiceEndpoint": {
@@ -720,43 +1044,81 @@
     ],
     "pluginsData": {},
     "functions": {
-      "retrieve_data": {
-        "handler": "dist/handler.retrieve_data",
+      "retrieve_payload": {
+        "handler": "dist/handler.retrieve_payload",
         "events": [
           {
             "http": {
-              "path": "retrieve-data",
+              "path": "retrieve-payload",
               "method": "get",
               "integration": "AWS_PROXY"
             }
           }
         ],
-        "name": "squarebox-backend-develop-retrieve_data",
+        "name": "squarebox-backend-develop-retrieve_payload",
         "package": {},
         "memory": 1024,
         "timeout": 15,
         "runtime": "nodejs12.x",
         "vpc": {},
-        "versionLogicalId": "RetrieveUnderscoredataLambdaVersionRoW1QVej1vK2QSDVcxk6HX3N93A09a95bps5hw9uBA"
+        "versionLogicalId": "RetrieveUnderscorepayloadLambdaVersiontKo6n5kqkPslcS8TPmi4uLTTXwoD0TmzwpdSMQIiHzM"
       },
-      "send_data": {
-        "handler": "dist/handler.send_data",
+      "send_payload": {
+        "handler": "dist/handler.send_payload",
         "events": [
           {
             "http": {
-              "path": "send-data",
+              "path": "send-payload",
               "method": "post",
               "integration": "AWS_PROXY"
             }
           }
         ],
-        "name": "squarebox-backend-develop-send_data",
+        "name": "squarebox-backend-develop-send_payload",
         "package": {},
         "memory": 1024,
         "timeout": 15,
         "runtime": "nodejs12.x",
         "vpc": {},
-        "versionLogicalId": "SendUnderscoredataLambdaVersionWud8n5kn5yrLMuaZ4YvV0P2nyyEHohDGhdyoUOSk"
+        "versionLogicalId": "SendUnderscorepayloadLambdaVersionTx223ZS4KwO1iM3WH522REwLehXfSfRoVONt4OvMU"
+      },
+      "retrieve_qrcode": {
+        "handler": "dist/handler.retrieve_qrcode",
+        "events": [
+          {
+            "http": {
+              "path": "retrieve-qrcode",
+              "method": "get",
+              "integration": "AWS_PROXY"
+            }
+          }
+        ],
+        "name": "squarebox-backend-develop-retrieve_qrcode",
+        "package": {},
+        "memory": 1024,
+        "timeout": 15,
+        "runtime": "nodejs12.x",
+        "vpc": {},
+        "versionLogicalId": "RetrieveUnderscoreqrcodeLambdaVersionHfIMDVXQ0my5gd2Zc7JrtZMnNtUIpsifbTbfGfr0zE"
+      },
+      "send_qrcode": {
+        "handler": "dist/handler.send_qrcode",
+        "events": [
+          {
+            "http": {
+              "path": "send-qrcode",
+              "method": "post",
+              "integration": "AWS_PROXY"
+            }
+          }
+        ],
+        "name": "squarebox-backend-develop-send_qrcode",
+        "package": {},
+        "memory": 1024,
+        "timeout": 15,
+        "runtime": "nodejs12.x",
+        "vpc": {},
+        "versionLogicalId": "SendUnderscoreqrcodeLambdaVersionQ4Iv9uJf6NodFvrmLUZgU3ZrkpuCLUrDy17XTXX4s"
       }
     },
     "resources": {
@@ -832,7 +1194,7 @@
     "artifact": "/Users/jaslyn/Documents/git/govtech/squarebox/backend/.serverless/squarebox-backend.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/squarebox-backend/develop/1628141363325-2021-08-05T05:29:23.325Z",
+    "artifactDirectoryName": "serverless/squarebox-backend/develop/1628142727493-2021-08-05T05:52:07.493Z",
     "artifact": "squarebox-backend.zip"
   }
 }

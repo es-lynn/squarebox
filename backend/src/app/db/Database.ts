@@ -9,7 +9,7 @@ const PayloadData: NoSQLDatabase<{
 
 const QRCodeData: NoSQLDatabase<{
   id: string
-  payload_data: string
+  qrcode_data: string
 }> = new AwsDynamodb(Cfg.REGION, Cfg.DB_QRCODE_DATA)
 
 export const DB = { PayloadData, QRCodeData }

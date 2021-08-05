@@ -19,31 +19,45 @@ provider:
     SERVICE: ${self:custom.service}
   lambdaHashingVersion: '20201221'
 
-  iamRoleStatements:
-    - Effect: Allow
-      Action:
-        - dynamodb:Query
-        - dynamodb:Scan
-        - dynamodb:GetItem
-        - dynamodb:PutItem
-        - dynamodb:UpdateItem
-        - dynamodb:DeleteItem
-      Resource:
-        - { Fn::GetAtt: ["${env:DB_PAYLOAD_DATA}", 'Arn'] }
-        - { Fn::GetAtt: ["${env:DB_QRCODE_DATA}", 'Arn'] }
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - dynamodb:Query
+            - dynamodb:Scan
+            - dynamodb:GetItem
+            - dynamodb:PutItem
+            - dynamodb:UpdateItem
+            - dynamodb:DeleteItem
+          Resource:
+            - { Fn::GetAtt: ["${env:DB_PAYLOAD_DATA}", 'Arn'] }
+            - { Fn::GetAtt: ["${env:DB_QRCODE_DATA}", 'Arn'] }
 
 functions:
-  retrieve_data:
-    handler: dist/handler.retrieve_data
+  retrieve_payload:
+    handler: dist/handler.retrieve_payload
     events:
       - http:
-          path: /retrieve-data
+          path: /retrieve-payload
           method: get
-  send_data:
-    handler: dist/handler.send_data
+  send_payload:
+    handler: dist/handler.send_payload
     events:
       - http:
-          path: /send-data
+          path: /send-payload
+          method: post
+  retrieve_qrcode:
+    handler: dist/handler.retrieve_qrcode
+    events:
+      - http:
+          path: /retrieve-qrcode
+          method: get
+  send_qrcode:
+    handler: dist/handler.send_qrcode
+    events:
+      - http:
+          path: /send-qrcode
           method: post
 
 resources:
