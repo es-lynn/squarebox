@@ -58,7 +58,7 @@ export const SetupScannerModePage = () => {
             Nav.url(path.scanner.scan_qr)
           }}
         >
-          Receive Text
+          Scan QR Code
         </PrimaryButton>
         <LinkButton onClick={logout}>Logout</LinkButton>
       </TwoButtonGrid>
