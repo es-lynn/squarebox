@@ -19,6 +19,9 @@ provider:
     SERVICE: ${self:custom.service}
   lambdaHashingVersion: '20201221'
 
+  httpApi:
+    cors: true
+
   iam:
     role:
       statements:
@@ -41,24 +44,28 @@ functions:
       - http:
           path: /retrieve-payload
           method: get
+          cors: true
   send_payload:
     handler: dist/handler.send_payload
     events:
       - http:
           path: /send-payload
           method: post
+          cors: true
   retrieve_qrcode:
     handler: dist/handler.retrieve_qrcode
     events:
       - http:
           path: /retrieve-qrcode
           method: get
+          cors: true
   send_qrcode:
     handler: dist/handler.send_qrcode
     events:
       - http:
           path: /send-qrcode
           method: post
+          cors: true
 
 resources:
   Resources:
@@ -87,6 +94,8 @@ resources:
           - AttributeName: id
             KeyType: HASH
         BillingMode: PAY_PER_REQUEST
+
+
 
 plugins:
   - serverless-dotenv-plugin

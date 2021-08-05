@@ -54,7 +54,7 @@ export const Login = () => {
         <CustomInput placeholder="Your Email" onChange={(e: any) => setEmail(e.target.value)} />
         <PassWordInput
           prefix={<PrefixIcon src={LockIcon} alt="lock-icon" />}
-          onChange={(e: any) => setPassword(e.target.value)}
+          onChange={e => setPassword(e.target.value)}
           iconRender={visible => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
         />
       </InputContainer>

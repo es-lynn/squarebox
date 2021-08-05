@@ -2,7 +2,7 @@ import React from 'react'
 import { PageView } from '../../components/business/PageView'
 import { Button, Text } from 'native-base'
 import { BodyText, HeaderText, PrimaryButton, TwoButtonGrid } from '../../style/style'
-import { logout, onSelectReceive, onSelectSend } from './Computer.func'
+import { logout, onSelectReceive, onSelectSend, onSelectSyncText } from './Computer.func'
 import styled from 'styled-components/native'
 import styledHtml from 'styled-components'
 import HomeImg from '../../images/home_page.svg'
@@ -36,6 +36,7 @@ export const Computer = () => {
       <TwoButtonGrid>
         <PrimaryButton onPress={onSelectSend}>Generate QR code</PrimaryButton>
         <PrimaryButton onPress={onSelectReceive}>Scan QR code</PrimaryButton>
+        <PrimaryButton onPress={onSelectSyncText}>Receive Text</PrimaryButton>
         <PrimaryButton onPress={logout}>Logout</PrimaryButton>
       </TwoButtonGrid>
     </PageView>

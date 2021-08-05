@@ -1,22 +1,24 @@
 import React, { useEffect, useState } from 'react'
 import httyp from 'httyp'
-import { Cfg } from '../../app/config/Config'
 import { Text } from 'native-base'
-import QRCode from 'react-qr-code'
-import { credentials } from '../State'
+import { credentials } from '../../State'
+import { Cfg } from '../../../app/config/Config'
 
-export const ScannerReceiveQRPage = () => {
-  const [qrcode, setQrcode] = useState<string>()
+export const SyncTextPage = () => {
+  const [payload, setPayload] = useState<string>()
   useEffect(() => {
     // @ts-ignore
     const username: string = credentials.state()['username']
     const retrieveAPI = () => {
-      if (qrcode == null) {
+      if (payload == null) {
         httyp
-          .url(`${Cfg.BACKEND_URL}/retrieve-qrcode?id=${username}`)
-          .get<{ id: string; qrcode: string }>()
+          .url(`${Cfg.BACKEND_URL}/retrieve-payload`)
+          .params({
+            id: username
+          })
+          .get<{ id: string; payload: string }>()
           .then(data => {
-            setQrcode(data.data.qrcode)
+            setPayload(data.data.payload)
           })
       } else {
         clearInterval(intervalID)
@@ -24,11 +26,11 @@ export const ScannerReceiveQRPage = () => {
     }
     const intervalID = setInterval(retrieveAPI, 1000)
     return () => clearInterval(intervalID)
-  }, [qrcode])
+  }, [payload])
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }}>
-      {qrcode ? <QRCode value={qrcode} /> : <Text>Waiting for scanner</Text>}
+      {payload ? <Text>{payload}</Text> : <Text>Waiting for scanner</Text>}
     </div>
   )
 }
