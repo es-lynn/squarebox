@@ -239,7 +239,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/squarebox-backend/develop/1628149628380-2021-08-05T07:47:08.380Z/squarebox-backend.zip"
+                "S3Key": "serverless/squarebox-backend/develop/1628196972442-2021-08-05T20:56:12.442Z/squarebox-backend.zip"
               },
               "Handler": "dist/handler.retrieve_payload",
               "Runtime": "nodejs12.x",
@@ -275,7 +275,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/squarebox-backend/develop/1628149628380-2021-08-05T07:47:08.380Z/squarebox-backend.zip"
+                "S3Key": "serverless/squarebox-backend/develop/1628196972442-2021-08-05T20:56:12.442Z/squarebox-backend.zip"
               },
               "Handler": "dist/handler.send_payload",
               "Runtime": "nodejs12.x",
@@ -311,7 +311,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/squarebox-backend/develop/1628149628380-2021-08-05T07:47:08.380Z/squarebox-backend.zip"
+                "S3Key": "serverless/squarebox-backend/develop/1628196972442-2021-08-05T20:56:12.442Z/squarebox-backend.zip"
               },
               "Handler": "dist/handler.retrieve_qrcode",
               "Runtime": "nodejs12.x",
@@ -347,7 +347,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/squarebox-backend/develop/1628149628380-2021-08-05T07:47:08.380Z/squarebox-backend.zip"
+                "S3Key": "serverless/squarebox-backend/develop/1628196972442-2021-08-05T20:56:12.442Z/squarebox-backend.zip"
               },
               "Handler": "dist/handler.send_qrcode",
               "Runtime": "nodejs12.x",
@@ -376,44 +376,44 @@
               "SendUnderscoreqrcodeLogGroup"
             ]
           },
-          "RetrieveUnderscorepayloadLambdaVersion23praP9cBjLhnpngEiiJ1dp4qqjH5hTx4I0CY3sczJ4": {
+          "RetrieveUnderscorepayloadLambdaVersion09iA4qdQzV45IND55G8NnMuP7I2j67ujwKE12AKvM": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "RetrieveUnderscorepayloadLambdaFunction"
               },
-              "CodeSha256": "UnwNMgrODppqo5vACGW2QJhDL1tqphSwOD4AYtnB4ZU="
+              "CodeSha256": "mAg95nS+3hxesLPX0zifnAALk0fdXlbMRAKTQoAXeZE="
             }
           },
-          "SendUnderscorepayloadLambdaVersionQwmaJf0nNRyMWp0sEAbytx3Gagy8E399jUqFxQsjTCI": {
+          "SendUnderscorepayloadLambdaVersionFpOSSasQ4912PR1YMM36hyTI0bs18n0ubdYQKuU8sgk": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "SendUnderscorepayloadLambdaFunction"
               },
-              "CodeSha256": "UnwNMgrODppqo5vACGW2QJhDL1tqphSwOD4AYtnB4ZU="
+              "CodeSha256": "mAg95nS+3hxesLPX0zifnAALk0fdXlbMRAKTQoAXeZE="
             }
           },
-          "RetrieveUnderscoreqrcodeLambdaVersionc3tX4954LIqES4v8L6eamz86dJyYYbex5EwqeVWcA": {
+          "RetrieveUnderscoreqrcodeLambdaVersionjcccL15nn6d4hNHyU7tBHdTsT8WXbomXIXiLSIzTw": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "RetrieveUnderscoreqrcodeLambdaFunction"
               },
-              "CodeSha256": "UnwNMgrODppqo5vACGW2QJhDL1tqphSwOD4AYtnB4ZU="
+              "CodeSha256": "mAg95nS+3hxesLPX0zifnAALk0fdXlbMRAKTQoAXeZE="
             }
           },
-          "SendUnderscoreqrcodeLambdaVersiongwVhKuaNCfLYVZNzsEOzwVpczX9t0RZlMMmNJhGS74": {
+          "SendUnderscoreqrcodeLambdaVersionHP42PdqE0fT3rV7vNnjMpw71CJCFUloSW6hKznD9eI": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "SendUnderscoreqrcodeLambdaFunction"
               },
-              "CodeSha256": "UnwNMgrODppqo5vACGW2QJhDL1tqphSwOD4AYtnB4ZU="
+              "CodeSha256": "mAg95nS+3hxesLPX0zifnAALk0fdXlbMRAKTQoAXeZE="
             }
           },
           "ApiGatewayRestApi": {
@@ -852,7 +852,7 @@
               "SendUnderscoreqrcodeLambdaPermissionApiGateway"
             ]
           },
-          "ApiGatewayDeployment1628149618610": {
+          "ApiGatewayDeployment1628196968869": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -1072,7 +1072,7 @@
           "RetrieveUnderscorepayloadLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "RetrieveUnderscorepayloadLambdaVersion23praP9cBjLhnpngEiiJ1dp4qqjH5hTx4I0CY3sczJ4"
+              "Ref": "RetrieveUnderscorepayloadLambdaVersion09iA4qdQzV45IND55G8NnMuP7I2j67ujwKE12AKvM"
             },
             "Export": {
               "Name": "sls-squarebox-backend-develop-RetrieveUnderscorepayloadLambdaFunctionQualifiedArn"
@@ -1081,7 +1081,7 @@
           "SendUnderscorepayloadLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "SendUnderscorepayloadLambdaVersionQwmaJf0nNRyMWp0sEAbytx3Gagy8E399jUqFxQsjTCI"
+              "Ref": "SendUnderscorepayloadLambdaVersionFpOSSasQ4912PR1YMM36hyTI0bs18n0ubdYQKuU8sgk"
             },
             "Export": {
               "Name": "sls-squarebox-backend-develop-SendUnderscorepayloadLambdaFunctionQualifiedArn"
@@ -1090,7 +1090,7 @@
           "RetrieveUnderscoreqrcodeLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "RetrieveUnderscoreqrcodeLambdaVersionc3tX4954LIqES4v8L6eamz86dJyYYbex5EwqeVWcA"
+              "Ref": "RetrieveUnderscoreqrcodeLambdaVersionjcccL15nn6d4hNHyU7tBHdTsT8WXbomXIXiLSIzTw"
             },
             "Export": {
               "Name": "sls-squarebox-backend-develop-RetrieveUnderscoreqrcodeLambdaFunctionQualifiedArn"
@@ -1099,7 +1099,7 @@
           "SendUnderscoreqrcodeLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "SendUnderscoreqrcodeLambdaVersiongwVhKuaNCfLYVZNzsEOzwVpczX9t0RZlMMmNJhGS74"
+              "Ref": "SendUnderscoreqrcodeLambdaVersionHP42PdqE0fT3rV7vNnjMpw71CJCFUloSW6hKznD9eI"
             },
             "Export": {
               "Name": "sls-squarebox-backend-develop-SendUnderscoreqrcodeLambdaFunctionQualifiedArn"
@@ -1267,7 +1267,7 @@
         "timeout": 15,
         "runtime": "nodejs12.x",
         "vpc": {},
-        "versionLogicalId": "RetrieveUnderscorepayloadLambdaVersion23praP9cBjLhnpngEiiJ1dp4qqjH5hTx4I0CY3sczJ4"
+        "versionLogicalId": "RetrieveUnderscorepayloadLambdaVersion09iA4qdQzV45IND55G8NnMuP7I2j67ujwKE12AKvM"
       },
       "send_payload": {
         "handler": "dist/handler.send_payload",
@@ -1305,7 +1305,7 @@
         "timeout": 15,
         "runtime": "nodejs12.x",
         "vpc": {},
-        "versionLogicalId": "SendUnderscorepayloadLambdaVersionQwmaJf0nNRyMWp0sEAbytx3Gagy8E399jUqFxQsjTCI"
+        "versionLogicalId": "SendUnderscorepayloadLambdaVersionFpOSSasQ4912PR1YMM36hyTI0bs18n0ubdYQKuU8sgk"
       },
       "retrieve_qrcode": {
         "handler": "dist/handler.retrieve_qrcode",
@@ -1343,7 +1343,7 @@
         "timeout": 15,
         "runtime": "nodejs12.x",
         "vpc": {},
-        "versionLogicalId": "RetrieveUnderscoreqrcodeLambdaVersionc3tX4954LIqES4v8L6eamz86dJyYYbex5EwqeVWcA"
+        "versionLogicalId": "RetrieveUnderscoreqrcodeLambdaVersionjcccL15nn6d4hNHyU7tBHdTsT8WXbomXIXiLSIzTw"
       },
       "send_qrcode": {
         "handler": "dist/handler.send_qrcode",
@@ -1381,7 +1381,7 @@
         "timeout": 15,
         "runtime": "nodejs12.x",
         "vpc": {},
-        "versionLogicalId": "SendUnderscoreqrcodeLambdaVersiongwVhKuaNCfLYVZNzsEOzwVpczX9t0RZlMMmNJhGS74"
+        "versionLogicalId": "SendUnderscoreqrcodeLambdaVersionHP42PdqE0fT3rV7vNnjMpw71CJCFUloSW6hKznD9eI"
       }
     },
     "resources": {
@@ -1457,7 +1457,7 @@
     "artifact": "/Users/jaslyn/Documents/git/govtech/squarebox/backend/.serverless/squarebox-backend.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/squarebox-backend/develop/1628149628380-2021-08-05T07:47:08.380Z",
+    "artifactDirectoryName": "serverless/squarebox-backend/develop/1628196972442-2021-08-05T20:56:12.442Z",
     "artifact": "squarebox-backend.zip"
   }
 }
