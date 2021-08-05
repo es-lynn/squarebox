@@ -2,6 +2,8 @@ import { Nav } from '../../app/Navigator'
 import { path } from '../../routes/path'
 import { UserDataStore } from '../../app/storage/LocalStore'
 import { credentials, device } from '../State'
+import httyp from 'httyp/index'
+import { Cfg } from '../../app/config/Config'
 
 export const onSelectReceive = () => {
   Nav.url(path.receiving.scanner)
