@@ -13,10 +13,7 @@ export const ScannerReceiveQRPage = () => {
     const retrieveAPI = () => {
       if (qrcode == null) {
         httyp
-          .url(`${Cfg.BACKEND_URL}/retrieve-qrcode`)
-          .params({
-            id: username
-          })
+          .url(`${Cfg.BACKEND_URL}/retrieve-qrcode?id=${username}`)
           .get<{ id: string; qrcode: string }>()
           .then(data => {
             setQrcode(data.data.qrcode)

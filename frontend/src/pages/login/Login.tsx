@@ -51,10 +51,10 @@ export const Login = () => {
       <ParaText>Please fill in the fields below to sign in</ParaText>
       <InputContainer>
         {/* <PhoneInput addonBefore="+65" placeholder="Your Phone Number" /> */}
-        <CustomInput placeholder="Your Email" onChange={(e: any) => setEmail(e.value)} />
+        <CustomInput placeholder="Your Email" onChange={(e: any) => setEmail(e.target.value)} />
         <PassWordInput
           prefix={<PrefixIcon src={LockIcon} alt="lock-icon" />}
-          onChange={(e: any) => setPassword(e.value)}
+          onChange={e => setPassword(e.target.value)}
           iconRender={visible => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
         />
       </InputContainer>
