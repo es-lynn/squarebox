@@ -1,17 +1,15 @@
-import { FileSystemDatabase } from '@aelesia/commons/dist/src/aws/dynamodb/FileSystemDatabase'
+import { NoSQLDatabase } from '@aelesia/commons/dist/src/aws/dynamodb/NoSQLDatabase'
+import { Cfg } from '../config/Config'
+import { AwsDynamodb } from '@aelesia/commons/dist/src/aws/dynamodb/AwsDynamodb'
 
-const fileLocation = undefined
-
-const Pairing = new FileSystemDatabase<{
-  id: string
-  computer_uuid: string
-  scanner_uuid: string
-}>('PAIRING', fileLocation)
-
-const Data = new FileSystemDatabase<{
+const PayloadData: NoSQLDatabase<{
   id: string
   payload_data: string
-  qrcode_data: string
-}>('DATA', fileLocation)
+}> = new AwsDynamodb(Cfg.REGION, Cfg.DB_PAYLOAD_DATA)
 
-export const DB = { Data, Pairing }
+const QRCodeData: NoSQLDatabase<{
+  id: string
+  qrcode_data: string
+}> = new AwsDynamodb(Cfg.REGION, Cfg.DB_QRCODE_DATA)
+
+export const DB = { PayloadData, QRCodeData }
