@@ -32,12 +32,18 @@ provider:
         - { Fn::GetAtt: ["${env:DB_DATA}", 'Arn'] }
 
 functions:
-  hello:
-    handler: dist/handler.retrieve_content
+  retrieve_data:
+    handler: dist/handler.retrieve_data
     events:
       - http:
-          path: /retrieve-content
+          path: /retrieve-data
           method: get
+  send_data:
+    handler: dist/handler.send_data
+    events:
+      - http:
+          path: /send-data
+          method: post
 
 resources:
   Resources:
@@ -56,3 +62,5 @@ resources:
 
 plugins:
   - serverless-dotenv-plugin
+  - serverless-plugin-include-dependencies
+

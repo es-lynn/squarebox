@@ -1,10 +1,11 @@
-import { FileSystemDatabase } from '@aelesia/commons/dist/src/aws/dynamodb/FileSystemDatabase'
+import { NoSQLDatabase } from '@aelesia/commons/dist/src/aws/dynamodb/NoSQLDatabase'
+import { Cfg } from '../config/Config'
+import { AwsDynamodb } from '@aelesia/commons/dist/src/aws/dynamodb/AwsDynamodb'
 
-const fileLocation = undefined
-const Data = new FileSystemDatabase<{
+const Data: NoSQLDatabase<{
   id: string
   payload_data: string
   qrcode_data: string
-}>('DATA', fileLocation)
+}> = new AwsDynamodb(Cfg.REGION, 'DATA')
 
 export const DB = { Data }
