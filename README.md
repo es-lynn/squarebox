@@ -32,3 +32,9 @@ yarn install
 `rm -rf build && yarn build && serve -s build`
 
 cd into `index.html` and extract it from `build/index.html`
+
+# Backend
+
+## Deploy
+
+`yarn deploy`
