@@ -21,7 +21,7 @@ export const retrieve_payload = async (
   data: APIRetrievePayloadReq
 ): Promise<APIRetrievePayloadRes> => {
   const payload = await DB.PayloadData.select(data.id)
-  if (DateUtil.add(TimeUtil.ONE_MINUTE, payload.created_at) > new Date()) {
+  if (DateUtil.add(TimeUtil.ONE_MINUTE, payload.created_at) < new Date()) {
     await DB.PayloadData.delete(data.id)
     throw Error('Data not found')
   }
@@ -51,7 +51,7 @@ export const retrieve_qrcode = async (
   data: APIRetrieveQRCodeReq
 ): Promise<APIRetrieveQRCodeRes> => {
   const qrcode = await DB.QRCodeData.select(data.id)
-  if (DateUtil.add(TimeUtil.ONE_MINUTE, qrcode.created_at) > new Date()) {
+  if (DateUtil.add(TimeUtil.ONE_MINUTE, qrcode.created_at) < new Date()) {
     await DB.QRCodeData.delete(data.id)
     throw Error('Data not found')
   }
