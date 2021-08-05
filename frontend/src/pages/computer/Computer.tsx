@@ -7,8 +7,6 @@ import styled from 'styled-components/native'
 import styledHtml from 'styled-components'
 import HomeImg from '../../images/home_page.svg'
 import { credentials } from '../State'
-import httyp from 'httyp/index'
-import { Cfg } from '../../app/config/Config'
 import { API } from '../../services/API'
 
 const AfterLoginImage = styledHtml.img`
@@ -41,7 +39,7 @@ export const Computer = () => {
         alert(JSON.stringify(data)) // TODO: Change
       }
 
-      const intervalID = setInterval(retrieveAPI, 1000)
+      const intervalID = setInterval(retrieveAPI, 3000)
       return () => clearInterval(intervalID)
     }
   }, [])
