@@ -59,7 +59,7 @@ export const ShowQRCode = () => {
   return (
     <PageView>
       <HeaderText>Generate QR code it is! 💪</HeaderText>
-      <ParaText>Here you go</ParaText>
+      <ParaText>Here you go!</ParaText>
       <QRCode value={content} />
       <ButtonWrapper>
         <PrimaryButton

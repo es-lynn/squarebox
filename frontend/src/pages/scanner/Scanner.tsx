@@ -1,15 +1,16 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { Nav } from '../../app/Navigator'
 import { path } from '../../routes/path'
 import { PageView } from '../../components/business/PageView'
-import { BodyText, HeaderText, PrimaryButton, TwoButtonGrid } from '../../style/style'
+import { BodyText, HeaderText, LinkButton, PrimaryButton, TwoButtonGrid } from '../../style/style'
 import { SVGScannerHomePage } from '../../images/SVGScannerHomePage'
 import { logout } from '../computer/Computer.func'
 import styledHtml from 'styled-components'
 import { credentials } from '../State'
 import { API } from '../../services/API'
 import { scannerQRCode } from './ScannerRetrieveQRPage'
+import { useLinkedState } from '../../lib/LinkedState'
 
 export const SetupScannerModePage = () => {
   useEffect(() => {
@@ -31,9 +32,19 @@ export const SetupScannerModePage = () => {
     }
   }, [])
 
+  const [_credentials] = useLinkedState(credentials)
+  const name: string | undefined = (() => {
+    if (_credentials?.mode === 'online') {
+      return _credentials.username
+    }
+  })()
   return (
     <PageView>
-      <HeaderText>{'Hello Jason!\nWelcome back!'}</HeaderText>
+      {name ? (
+        <HeaderText>{`Hello ${name}!\nWelcome back!`}</HeaderText>
+      ) : (
+        <HeaderText>{'Hello Anonymous!\nWelcome back!'}</HeaderText>
+      )}
       <SVGScannerHomePage />
       <BodyText style={{ marginTop: 16, marginBottom: 16 }}>
         {"Scan the code\nand you're set to go!"}
@@ -44,9 +55,9 @@ export const SetupScannerModePage = () => {
             Nav.url(path.scanner.scan_qr)
           }}
         >
-          Scan QR code
+          Receive Text
         </PrimaryButton>
-        <PrimaryButton onPress={logout}>Logout</PrimaryButton>
+        <LinkButton onClick={logout}>Logout</LinkButton>
       </TwoButtonGrid>
     </PageView>
   )
