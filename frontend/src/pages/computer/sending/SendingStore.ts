@@ -10,10 +10,12 @@ export const sendingStore = new LinkedState<string>('')
 export const onNext = () => Nav.url(path.sending.display)
 
 export const sendQRCodeToServer = async (qrcode: string) => {
-  // @ts-ignore
-  const username: string = credentials.state()['username']
-  await API.send_qrcode({
-    id: username,
-    qrcode: qrcode
-  })
+  if (credentials.state()?.mode === 'online') {
+    // @ts-ignore
+    const username: string = credentials.state()['username']
+    await API.send_qrcode({
+      id: username,
+      qrcode: qrcode
+    })
+  }
 }

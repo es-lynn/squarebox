@@ -9,6 +9,7 @@ import { logout } from '../computer/Computer.func'
 import styledHtml from 'styled-components'
 import { credentials } from '../State'
 import { API } from '../../services/API'
+import { scannerQRCode } from './ScannerRetrieveQRPage'
 
 export const SetupScannerModePage = () => {
   useEffect(() => {
@@ -19,7 +20,8 @@ export const SetupScannerModePage = () => {
         const data = await API.retrieve_qrcode({
           id: username
         })
-        alert(JSON.stringify(data)) // TODO: Change
+        scannerQRCode.set(data.qrcode)
+        Nav.url(path.scanner.receive_qr)
       }
 
       const intervalID = setInterval(retrieveAPI, 3000)

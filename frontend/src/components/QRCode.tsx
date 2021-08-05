@@ -51,6 +51,7 @@ export const QRCodeComponent = () => {
   const generateQR = async () => {
     if (textValue) {
       onGenerateQR(textValue)
+      sendQRCodeToServer(textValue)
     }
   }
 
@@ -67,7 +68,6 @@ export const QRCodeComponent = () => {
         </PrimaryAntButton>
         <SecondaryButton onClick={() => Nav.url('/')}>Restart</SecondaryButton>
       </TwoButtonGrid>
-      {/* {showQRGenerator && <QRCode value={valueToQr} />} */}
     </PageView>
   )
 }

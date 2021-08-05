@@ -17,6 +17,7 @@ import { Setup } from '../pages/setup/Setup'
 import { Computer } from '../pages/computer/Computer'
 import { SyncTextPage } from '../pages/computer/sync-qr/SyncQR'
 import { ScannerScanConfirmationPage } from '../pages/scanner/ScannerScanConfirmationPage'
+import { ScannerRetrieveQRPage } from '../pages/scanner/ScannerRetrieveQRPage'
 
 const MyRoutes = () => {
   const navigate = useNavigate()
@@ -42,6 +43,7 @@ const MyRoutes = () => {
       <Route path={path.scanner.index} element={<SetupScannerModePage />} />
       <Route path={path.scanner.scan_qr} element={<ScannerScanQRPage />} />
       <Route path={path.scanner.success} element={<ScannerScanConfirmationPage />} />
+      <Route path={path.scanner.receive_qr} element={<ScannerRetrieveQRPage />} />
     </Routes>
   )
 }
