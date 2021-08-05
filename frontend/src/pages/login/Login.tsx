@@ -15,9 +15,9 @@ import {
 import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons'
 import LockIcon from '../../images/icons/lock.svg'
 
-const HomeImage = styledHtml.img`
-  width: 331px;
-  height: 255px;
+const FrontPageImg = styledHtml.img`
+  width: 192px;
+  height: 161px;
   margin-top: 7px;
 `
 
@@ -47,14 +47,14 @@ export const Login = () => {
     <PageView>
       <HeaderText>Hello there!</HeaderText>
       <HeaderText>Just one time sign in is enough! 😎</HeaderText>
-      <HomeImage src={LogInImg} alt="LogInImg" />
+      <FrontPageImg src={LogInImg} alt="LogInImg" />
       <ParaText>Please fill in the fields below to sign in</ParaText>
       <InputContainer>
         {/* <PhoneInput addonBefore="+65" placeholder="Your Phone Number" /> */}
-        <CustomInput placeholder="Your Email" onChange={(e: any) => setEmail(e.value)} />
+        <CustomInput placeholder="Your Email" onChange={(e: any) => setEmail(e.target.value)} />
         <PassWordInput
           prefix={<PrefixIcon src={LockIcon} alt="lock-icon" />}
-          onChange={(e: any) => setPassword(e.value)}
+          onChange={(e: any) => setPassword(e.target.value)}
           iconRender={visible => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
         />
       </InputContainer>
