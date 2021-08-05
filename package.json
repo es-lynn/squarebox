@@ -21,6 +21,7 @@
     "start:frontend": "npx lerna exec --scope=squarebox-frontend yarn start",
     "start:backend": "npx lerna exec --scope=squarebox-backend yarn start",
     "compile": "npx lerna exec -- yarn compile",
-    "compile:fix": "npx lerna exec -- yarn compile:fix"
+    "compile:fix": "npx lerna exec -- yarn compile:fix",
+    "dist:frontend": "sh frontend-build-script.sh"
   }
 }
