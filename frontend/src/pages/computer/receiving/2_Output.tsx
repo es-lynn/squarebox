@@ -1,9 +1,7 @@
-import React, { useRef, useState } from 'react'
-import { Input as AntInput } from 'antd'
+import React, { useRef } from 'react'
 import {
   BodyText,
   HeaderText,
-  PrimaryButton,
   SecondaryButton,
   TwoButtonGrid,
   PrimaryAntButton

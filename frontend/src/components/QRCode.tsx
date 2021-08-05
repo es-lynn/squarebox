@@ -1,14 +1,11 @@
 import React, { useState } from 'react'
 import { PageView } from './business/PageView'
 import { Input as AntInput } from 'antd'
-import QRCode from 'react-qr-code'
 import { sendQRCodeToServer } from '../pages/computer/sending/SendingStore'
 import { Nav } from '../app/Navigator'
-import { withStyle } from 'reactjs-commons'
 import {
   BodyText,
   HeaderText,
-  PrimaryButton,
   SecondaryButton,
   TwoButtonGrid,
   PrimaryAntButton

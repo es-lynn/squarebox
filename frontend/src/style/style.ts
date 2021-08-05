@@ -1,4 +1,4 @@
-import { Button, Text, Link } from 'native-base'
+import { Button, Text } from 'native-base'
 import { Input as AntInput, Button as AntButton } from 'antd'
 import styled from 'styled-components/native'
 import styledHtml from 'styled-components'

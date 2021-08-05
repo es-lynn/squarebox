@@ -1,19 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { PageView } from './business/PageView'
-import { Input as AntInput } from 'antd'
 import QRCode from 'react-qr-code'
-import { sendQRCodeToServer } from '../pages/computer/sending/SendingStore'
 import { Nav } from '../app/Navigator'
 import { useLinkedState } from '../lib/LinkedState'
 import { generatingStore } from '../pages/computer/receiving/ReceivingStore'
-import {
-  BodyText,
-  HeaderText,
-  PrimaryButton,
-  SecondaryButton,
-  TwoButtonGrid,
-  PrimaryAntButton
-} from '../style/style'
+import { BodyText, HeaderText, PrimaryButton, SecondaryButton, TwoButtonGrid } from '../style/style'
 import styled from 'styled-components/native'
 import styledHtml from 'styled-components'
 import { path } from '../routes/path'

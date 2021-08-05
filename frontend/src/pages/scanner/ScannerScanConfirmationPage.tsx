@@ -1,13 +1,9 @@
-import { QRCodeScanner } from '../../components/QRCodeScanner'
-import { credentials } from '../State'
-import { API } from '../../services/API'
 import React from 'react'
 import { PageView } from '../../components/business/PageView'
 import { BodyText, HeaderText, PrimaryButton, TwoButtonGrid } from '../../style/style'
 import ScannerSuccess from '../../images/scanner_success.svg'
 import { Nav } from '../../app/Navigator'
 import { path } from '../../routes/path'
-import { logout } from '../computer/Computer.func'
 import styledHtml from 'styled-components'
 
 export const ScannerScanConfirmationPage = () => {
