@@ -68,7 +68,6 @@ export const QRCodeComponent = () => {
         </PrimaryAntButton>
         <SecondaryButton onClick={() => Nav.url('/')}>Restart</SecondaryButton>
       </TwoButtonGrid>
-      {/* {showQRGenerator && <QRCode value={valueToQr} />} */}
     </PageView>
   )
 }
