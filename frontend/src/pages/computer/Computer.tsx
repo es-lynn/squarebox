@@ -4,7 +4,7 @@ import { BodyText, HeaderText, LinkButton, PrimaryButton, TwoButtonGrid } from '
 import { logout, onSelectReceive, onSelectSend } from './Computer.func'
 import styled from 'styled-components/native'
 import styledHtml from 'styled-components'
-import { SVGHomePage } from "../../images/SVGHomePage";
+import { SVGHomePage } from '../../images/SVGHomePage'
 import { credentials } from '../State'
 import { API } from '../../services/API'
 import { receivingStore } from './receiving/ReceivingStore'
@@ -42,7 +42,7 @@ export const Computer = () => {
         Nav.url(path.receiving.output)
       }
 
-      const intervalID = setInterval(retrieveAPI, 3000)
+      const intervalID = setInterval(retrieveAPI, 1000)
       return () => clearInterval(intervalID)
     }
   }, [])

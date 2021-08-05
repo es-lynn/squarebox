@@ -1,6 +1,4 @@
 import React, { useState } from 'react'
-import { credentials } from '../State'
-import { API } from '../../services/API'
 import { Nav } from '../../app/Navigator'
 import { path } from '../../routes/path'
 

@@ -3,7 +3,7 @@ import React from 'react'
 import { configureDevice } from './Setup.func'
 import styled from 'styled-components/native'
 import { BodyText, HeaderText, TwoButtonGrid, PrimaryButton } from '../../style/style'
-import {SVGChooseDevice} from "../../images/SVGChooseDevice";
+import { SVGChooseDevice } from '../../images/SVGChooseDevice'
 import styledHtml from 'styled-components'
 
 const ChooseDeviceImage = styledHtml.img`
@@ -22,7 +22,7 @@ export const Setup = () => {
     <PageView>
       <HeaderText>Almost there!</HeaderText>
       <HeaderText> Now, help us choose a device type. 🎮</HeaderText>
-      <SVGChooseDevice/>
+      <SVGChooseDevice />
       <ParaText>Select your device type:</ParaText>
       <TwoButtonGrid>
         <PrimaryButton onPress={() => configureDevice('computer')}>Computer</PrimaryButton>
