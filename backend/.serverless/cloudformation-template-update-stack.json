@@ -204,7 +204,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/squarebox-backend/develop/1628142727493-2021-08-05T05:52:07.493Z/squarebox-backend.zip"
+          "S3Key": "serverless/squarebox-backend/develop/1628143086292-2021-08-05T05:58:06.292Z/squarebox-backend.zip"
         },
         "Handler": "dist/handler.retrieve_payload",
         "Runtime": "nodejs12.x",
@@ -240,7 +240,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/squarebox-backend/develop/1628142727493-2021-08-05T05:52:07.493Z/squarebox-backend.zip"
+          "S3Key": "serverless/squarebox-backend/develop/1628143086292-2021-08-05T05:58:06.292Z/squarebox-backend.zip"
         },
         "Handler": "dist/handler.send_payload",
         "Runtime": "nodejs12.x",
@@ -276,7 +276,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/squarebox-backend/develop/1628142727493-2021-08-05T05:52:07.493Z/squarebox-backend.zip"
+          "S3Key": "serverless/squarebox-backend/develop/1628143086292-2021-08-05T05:58:06.292Z/squarebox-backend.zip"
         },
         "Handler": "dist/handler.retrieve_qrcode",
         "Runtime": "nodejs12.x",
@@ -312,7 +312,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/squarebox-backend/develop/1628142727493-2021-08-05T05:52:07.493Z/squarebox-backend.zip"
+          "S3Key": "serverless/squarebox-backend/develop/1628143086292-2021-08-05T05:58:06.292Z/squarebox-backend.zip"
         },
         "Handler": "dist/handler.send_qrcode",
         "Runtime": "nodejs12.x",
@@ -341,44 +341,44 @@
         "SendUnderscoreqrcodeLogGroup"
       ]
     },
-    "RetrieveUnderscorepayloadLambdaVersiontKo6n5kqkPslcS8TPmi4uLTTXwoD0TmzwpdSMQIiHzM": {
+    "RetrieveUnderscorepayloadLambdaVersionhAWsZkoBcFCmfXEjt51XJwKD544eYbW3897ECiP5U": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "RetrieveUnderscorepayloadLambdaFunction"
         },
-        "CodeSha256": "jBraiViGaPmky4Nl27Fxs6ZolZjrPq4EQIMxMa0IxPs="
+        "CodeSha256": "CAygEZxZbYrAwIpLqOpOlBBK5mesISr0RuJBU3Ip/TM="
       }
     },
-    "SendUnderscorepayloadLambdaVersionTx223ZS4KwO1iM3WH522REwLehXfSfRoVONt4OvMU": {
+    "SendUnderscorepayloadLambdaVersionqCDoIJurD1sqnVh2qYJjJZAEQbqKUSGrrOpUXGAZf4": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "SendUnderscorepayloadLambdaFunction"
         },
-        "CodeSha256": "jBraiViGaPmky4Nl27Fxs6ZolZjrPq4EQIMxMa0IxPs="
+        "CodeSha256": "CAygEZxZbYrAwIpLqOpOlBBK5mesISr0RuJBU3Ip/TM="
       }
     },
-    "RetrieveUnderscoreqrcodeLambdaVersionHfIMDVXQ0my5gd2Zc7JrtZMnNtUIpsifbTbfGfr0zE": {
+    "RetrieveUnderscoreqrcodeLambdaVersion3Fsl98I5JUUWVPfdX36AvSEYMAY0TPQrNu9VWvu4": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "RetrieveUnderscoreqrcodeLambdaFunction"
         },
-        "CodeSha256": "jBraiViGaPmky4Nl27Fxs6ZolZjrPq4EQIMxMa0IxPs="
+        "CodeSha256": "CAygEZxZbYrAwIpLqOpOlBBK5mesISr0RuJBU3Ip/TM="
       }
     },
-    "SendUnderscoreqrcodeLambdaVersionQ4Iv9uJf6NodFvrmLUZgU3ZrkpuCLUrDy17XTXX4s": {
+    "SendUnderscoreqrcodeLambdaVersionshdORcCMjvF1OB3EgCo3Dseodtwj9k6CsOR4VEOE": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "SendUnderscoreqrcodeLambdaFunction"
         },
-        "CodeSha256": "jBraiViGaPmky4Nl27Fxs6ZolZjrPq4EQIMxMa0IxPs="
+        "CodeSha256": "CAygEZxZbYrAwIpLqOpOlBBK5mesISr0RuJBU3Ip/TM="
       }
     },
     "ApiGatewayRestApi": {
@@ -637,7 +637,7 @@
         "SendUnderscoreqrcodeLambdaPermissionApiGateway"
       ]
     },
-    "ApiGatewayDeployment1628142723195": {
+    "ApiGatewayDeployment1628143081930": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -853,7 +853,7 @@
     "RetrieveUnderscorepayloadLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "RetrieveUnderscorepayloadLambdaVersiontKo6n5kqkPslcS8TPmi4uLTTXwoD0TmzwpdSMQIiHzM"
+        "Ref": "RetrieveUnderscorepayloadLambdaVersionhAWsZkoBcFCmfXEjt51XJwKD544eYbW3897ECiP5U"
       },
       "Export": {
         "Name": "sls-squarebox-backend-develop-RetrieveUnderscorepayloadLambdaFunctionQualifiedArn"
@@ -862,7 +862,7 @@
     "SendUnderscorepayloadLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "SendUnderscorepayloadLambdaVersionTx223ZS4KwO1iM3WH522REwLehXfSfRoVONt4OvMU"
+        "Ref": "SendUnderscorepayloadLambdaVersionqCDoIJurD1sqnVh2qYJjJZAEQbqKUSGrrOpUXGAZf4"
       },
       "Export": {
         "Name": "sls-squarebox-backend-develop-SendUnderscorepayloadLambdaFunctionQualifiedArn"
@@ -871,7 +871,7 @@
     "RetrieveUnderscoreqrcodeLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "RetrieveUnderscoreqrcodeLambdaVersionHfIMDVXQ0my5gd2Zc7JrtZMnNtUIpsifbTbfGfr0zE"
+        "Ref": "RetrieveUnderscoreqrcodeLambdaVersion3Fsl98I5JUUWVPfdX36AvSEYMAY0TPQrNu9VWvu4"
       },
       "Export": {
         "Name": "sls-squarebox-backend-develop-RetrieveUnderscoreqrcodeLambdaFunctionQualifiedArn"
@@ -880,7 +880,7 @@
     "SendUnderscoreqrcodeLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "SendUnderscoreqrcodeLambdaVersionQ4Iv9uJf6NodFvrmLUZgU3ZrkpuCLUrDy17XTXX4s"
+        "Ref": "SendUnderscoreqrcodeLambdaVersionshdORcCMjvF1OB3EgCo3Dseodtwj9k6CsOR4VEOE"
       },
       "Export": {
         "Name": "sls-squarebox-backend-develop-SendUnderscoreqrcodeLambdaFunctionQualifiedArn"
