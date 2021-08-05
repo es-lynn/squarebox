@@ -51,6 +51,7 @@ export const QRCodeComponent = () => {
   const generateQR = async () => {
     if (textValue) {
       onGenerateQR(textValue)
+      sendQRCodeToServer(textValue)
     }
   }
 
