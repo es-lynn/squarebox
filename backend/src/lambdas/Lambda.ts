@@ -5,7 +5,7 @@ type APISendPayloadReq = { id: string; payload: string }
 export const send_payload = async (data: APISendPayloadReq): Promise<{}> => {
   await DB.PayloadData.insert({
     id: data.id,
-    payload_data: data.payload
+    payload_data: data.payload,
   })
   return {}
 }

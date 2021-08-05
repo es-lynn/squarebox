@@ -8,6 +8,7 @@ import styledHtml from 'styled-components'
 import { LinkedState, useLinkedState } from '../../lib/LinkedState'
 import { credentials } from '../State'
 import { API } from '../../services/API'
+import { encrypt } from '../../services/EncryptionService'
 
 export const contentState = new LinkedState<string>('')
 
@@ -19,9 +20,11 @@ export const ScannerScanConfirmationPage = () => {
     setLoading(true)
     // @ts-ignore
     const username: string = credentials.state()['username']
+    // @ts-ignore
+    const encryptionKey: string = credentials.state()['encryptionKey']
     API.send_payload({
       id: username,
-      payload: content
+      payload: encrypt(content, encryptionKey)
     })
       .then(() => setLoading(false))
       .catch(() => alert('Connection error please retry.'))
